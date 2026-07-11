@@ -11,3 +11,5 @@ export const SITE_TITLE = "CancelKit — Turn cancellations into saved revenue";
 
 export const SITE_DESCRIPTION =
   "A drop-in cancel flow for indie SaaS founders: exit survey + instant Stripe-powered save offers.";
+
+export const SUPPORT_EMAIL = "efecaliskan3458@gmail.com";

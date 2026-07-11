@@ -23,6 +23,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { SUPPORT_EMAIL } from "@/lib/site";
 
 // Title intentionally omitted: the root layout's default title applies here,
 // and setting it again would get suffixed by the layout's title template.
@@ -327,7 +328,7 @@ export default function Home() {
           <span className="font-heading font-semibold text-foreground">
             CancelKit
           </span>
-          <nav className="flex items-center gap-6">
+          <nav className="flex flex-wrap items-center justify-center gap-6">
             <a href="#how-it-works" className="hover:text-foreground">
               How it works
             </a>
@@ -340,6 +341,21 @@ export default function Home() {
             <Link href="/login" className="hover:text-foreground">
               Log in
             </Link>
+            <Link href="/privacy" className="hover:text-foreground">
+              Privacy
+            </Link>
+            <Link href="/terms" className="hover:text-foreground">
+              Terms
+            </Link>
+            <Link href="/refund" className="hover:text-foreground">
+              Refunds
+            </Link>
+            <a
+              href={`mailto:${SUPPORT_EMAIL}`}
+              className="hover:text-foreground"
+            >
+              Support
+            </a>
           </nav>
           <span>&copy; {new Date().getFullYear()} CancelKit. All rights reserved.</span>
         </div>
