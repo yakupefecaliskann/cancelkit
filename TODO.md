@@ -9,7 +9,7 @@
 - [x] Next.js 15 projesini init et (TypeScript, App Router, Tailwind v4, ESLint) — v15.5.20 pinlendi (npm'de güncel olan v16 yerine, ARCHITECTURE.md kararına sadık kalındı)
 - [x] shadcn/ui kurulumu + tema token'larını UI_UX_GUIDELINES §2'ye göre yapılandır (Inter + JetBrains Mono dahil) — `app/globals.css` slate/indigo/success/warning token'larıyla güncellendi
 - [x] Git repo init + `.gitignore` + GitHub'a push (private) — repo `github.com/yakupefecaliskann/cancelkit` (private), `main` branch, ilk commit push edildi (2026-07-11)
-- [ ] Supabase projesi oluştur (cloud) + lokal `supabase` CLI bağlantısı — yalnızca **lokal** CLI kuruldu ve doğrulandı; cloud proje henüz açılmadı
+- [x] Supabase projesi oluştur (cloud) + lokal `supabase` CLI bağlantısı — cloud proje `cancelkit` (us-east-1) açıldı, 5 migration (4 mevcut + 1 yeni advisor düzeltmesi) uygulandı, `get_advisors` taraması temiz (2026-07-11)
 - [x] Veritabanı migration'larını yaz (ARCHITECTURE §5: profiles, projects, offers, survey_reasons, cancel_sessions, webhook_events + RLS politikaları + profiles trigger'ı) — 3 migration dosyası, `supabase start` ile hatasız uygulandı
 - [x] Env yapısı: `.env.local` + `.env.example` (ARCHITECTURE §7'deki tüm değişkenler) — lokal Supabase anahtarlarıyla dolduruldu
 - [ ] Vercel projesi oluştur, preview deploy'un çalıştığını doğrula
@@ -83,6 +83,7 @@
 - [x] **GDPR-2 (Kritik):** Doğrulanmamış `customerId` + rate-limit yok → sınırsız indirim yığma. Fix: (a) `cancel_sessions`'ta (project_id, customer_id) için partial unique index (`outcome='saved'`) = müşteri başına tek kurtarma, DB düzeyinde atomik garanti; (b) `accept/route.ts`'te Stripe'a dokunmadan önce "zaten saved" kontrolü → `already_saved` (409); (c) `lib/rate-limit.ts` + `sessions/route.ts`'te (project_id, customer_id) başına DB-tabanlı rate limit → `rate_limited` (429).
 - [x] **GDPR-3 (Düşük):** Mutation server action'ları yalnızca RLS'e güveniyor. Fix: `setOfferActive/deleteOffer/updateReasonLabel/deleteReason/moveReason`'a açık `.eq("project_id", active.id)` sahiplik kapsaması eklendi (defense-in-depth).
 - [x] **profiles.email (Düşük):** benzersizlik kısıtı yok. Fix: `profiles_email_key` unique index eklendi (webhook e-posta fallback'ini korur).
+- [x] **SEC-DEFINER (Orta, cloud lansım taramasında bulundu):** `handle_new_user`/`seed_default_survey_reasons` SECURITY DEFINER trigger fonksiyonları `PUBLIC`'e (dolayısıyla `anon`/`authenticated`'a) EXECUTE izniyle doğrudan `/rest/v1/rpc/...` üzerinden çağrılabiliyordu — ör. keyfi bir `project_id` ile sahte survey_reasons enjekte edilebilirdi. Fix: `20260711140000_revoke_trigger_function_execute.sql`'de `PUBLIC`'ten EXECUTE geri alındı (trigger'lar etkilenmez); `get_advisors` taraması temiz.
 
 ### Ödeme Altyapısı
 - [x] **PAY-1 (Yüksek):** Stripe başarılı + DB güncellemesi başarısız → müşteriye "değişmedi" deniyor ve churned işaretleniyor. Fix: Stripe başarısından sonra DB yazımı başarısız olsa bile widget'a `saved` (200) dönüyor (Stripe gerçeği kazanır), desync yüksek sesle loglanıyor; koşullu `.eq('outcome','open')` güncelleme.
