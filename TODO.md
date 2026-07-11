@@ -114,7 +114,7 @@
 ## Faz 6.6 — Lansmana Hazırlık (Operasyonel, panel işlemleri)
 > Faz 0/1'de kodu yazdık; burada geriye kalan "sadece panelden yapılan" canlıya alma adımlarını takip ediyoruz. Git/Supabase Cloud/Vercel/domain/Google OAuth zaten Faz 0-1'de işaretlendi.
 - [x] Custom SMTP (Resend): `cancelkit.site` domaini Resend'de doğrulandı (Vercel DNS auto-configure ile), Supabase Auth → SMTP Settings'e `smtp.resend.com:465` + API key ile bağlandı (2026-07-11). Uçtan uca teslimat testi henüz yapılmadı — canlı smoke test adımında doğrulanacak.
-- [ ] Lemon Squeezy: store + ürün (`$29/ay`, `$290/yıl`) oluştur, Test modunda doğrula, webhook kaydet, Live moda al
+- [x] Lemon Squeezy (Test mode): store `CancelKit` + `CancelKit Pro` ürünü ($29/ay tek variant, MVP kısıtına uygun) oluşturuldu, API key + Store ID + Variant ID + webhook (`/api/webhooks/lemonsqueezy`, imzalı secret) Vercel env'e girildi (2026-07-11). Live moda geçiş, iş bilgileri + yasal sayfalar tamamlanınca yapılacak.
 - [ ] Yasal sayfalar: Privacy Policy, Terms of Service, Refund Policy yazılıp yayınlanacak (Lemon Squeezy MoR onayı için zorunlu)
 - [ ] Destek e-postası (support@cancelkit.site veya benzeri) kurulup footer'a eklenecek
 - [ ] Uçtan uca canlı smoke test: kayıt → gerçek Stripe test hesabı → snippet → cancel flow → offer accept → dashboard → gerçek LS checkout
