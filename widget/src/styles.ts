@@ -25,6 +25,8 @@ export const CANCELKIT_STYLES = `
   position: relative;
   width: 100%;
   max-width: 420px;
+  max-height: 100%;
+  overflow-y: auto;
   background: #FFFFFF;
   color: #0F172A;
   border-radius: 12px;

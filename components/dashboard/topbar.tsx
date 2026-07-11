@@ -1,4 +1,5 @@
 import { signOut } from "@/app/(dashboard)/app/actions";
+import { MobileNav } from "@/components/dashboard/mobile-nav";
 import { ProjectSwitcher } from "@/components/dashboard/project-switcher";
 import { UpgradeButton } from "@/components/dashboard/upgrade-button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
@@ -19,17 +20,24 @@ function BillingIndicator({ billing }: { billing: BillingState }) {
   if (billing.plan === "trial") {
     return (
       <div className="flex items-center gap-2">
-        <Badge variant="outline" className="font-normal text-muted-foreground">
+        <Badge variant="outline" className="hidden font-normal text-muted-foreground sm:inline-flex">
           Trial · {billing.trialDaysLeft} {billing.trialDaysLeft === 1 ? "day" : "days"} left
         </Badge>
-        <UpgradeButton />
+        <Badge variant="outline" className="font-normal text-muted-foreground sm:hidden">
+          {billing.trialDaysLeft}d left
+        </Badge>
+        <UpgradeButton>
+          <span className="hidden sm:inline">Upgrade to Pro</span>
+          <span className="sm:hidden">Upgrade</span>
+        </UpgradeButton>
       </div>
     );
   }
   if (billing.plan === "past_due") {
     return (
       <Badge className="bg-warning/10 font-normal text-warning">
-        Payment issue — check your billing email
+        <span className="hidden sm:inline">Payment issue — check your billing email</span>
+        <span className="sm:hidden">Payment issue</span>
       </Badge>
     );
   }
@@ -50,13 +58,16 @@ export function Topbar({
   const initial = userEmail.charAt(0).toUpperCase() || "?";
 
   return (
-    <header className="flex h-14 items-center justify-between border-b border-border px-6">
-      <ProjectSwitcher
-        projects={projects.map((p) => ({ id: p.id, name: p.name }))}
-        activeId={activeProjectId}
-      />
+    <header className="relative flex h-14 items-center justify-between gap-3 border-b border-border px-4 sm:px-6">
+      <div className="flex min-w-0 items-center gap-2">
+        <MobileNav />
+        <ProjectSwitcher
+          projects={projects.map((p) => ({ id: p.id, name: p.name }))}
+          activeId={activeProjectId}
+        />
+      </div>
 
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2 sm:gap-4">
         <BillingIndicator billing={billing} />
 
         <DropdownMenu>

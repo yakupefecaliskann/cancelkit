@@ -34,7 +34,7 @@ export function ProjectSwitcher({
         });
       }}
     >
-      <SelectTrigger size="sm" className="w-48">
+      <SelectTrigger size="sm" className="w-28 sm:w-48">
         <SelectValue />
       </SelectTrigger>
       <SelectContent>

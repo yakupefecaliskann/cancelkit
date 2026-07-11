@@ -11,7 +11,7 @@ import {
   Settings,
 } from "lucide-react";
 
-const NAV_ITEMS = [
+export const NAV_ITEMS = [
   { href: "/app/overview", label: "Overview", icon: LayoutDashboard },
   { href: "/app/sessions", label: "Sessions", icon: Inbox },
   { href: "/app/offers", label: "Offers", icon: Tag },
