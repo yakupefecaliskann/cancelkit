@@ -131,6 +131,13 @@
 - [x] **Gözden kaçan detaylar:** TODO.md ve `.env.example` tam taranıp güncel bulundu; tek açık madde opsiyonel Sentry (bilinçli olarak launch-blocker değil).
 - [x] **Doğrulama:** `npm run lint` temiz, `npm run test:unit` 29/29 yeşil, `npx next build` (typecheck dahil) başarılı, widget yeniden derlendi ve gzip boyutu doğrulandı.
 
+## Faz 6.8 — Lemon Squeezy: Live moda geçiş için hesap değişimi
+> Faz 6.6'daki ilk Lemon Squeezy hesabında (store `429223`, `cancelkit-app`) Live moda geçiş için kimlik doğrulama denenirken hesabın ülkesi (kayıt sırasında yanlışlıkla "United States" seçilmiş) "Türkiye" adresiyle uyuşmadığından kilitlendi ve arayüzden düzeltilemedi. Çözüm: yeni bir Lemon Squeezy hesabı açıldı (2026-07-11), bu sefer kayıtta ülke doğru (Türkiye) seçildi.
+- [x] Yeni hesap: store `CancelKit` (`cancelkit-hq`, Store ID `429449`), ürün `CancelKit Pro` ($29/ay, Variant ID `1897604`, tax category "SaaS - personal use") oluşturuldu; kimlik doğrulama (yasal ad, Türkiye adresi, TCKN, Garanti BBVA SWIFT/IBAN) gönderildi — Lemon Squeezy'nin manuel incelemesi bekleniyor (o tamamlanınca mağaza otomatik Live moda geçecek, kod tarafında ek işlem gerekmiyor).
+- [x] Yeni API Key + Store ID + Variant ID + Webhook Secret Vercel env'e (`vercel env` CLI ile, Production+Preview) yazıldı, production yeniden deploy edildi.
+- [x] Uçtan uca yeniden doğrulama: gerçek checkout API çağrısı (curl) + tarayıcıdan test-mode satın alma → 3 webhook (`subscription_created/updated/payment_success`) yeni store'dan (`store_id: 429449`) doğru sırayla işlendi, imza doğrulandı, `profiles.subscription_status` → `active`. Eski hesap (`429223`) kullanılmıyor, dokunulmadan bırakıldı.
+- [ ] Lemon Squeezy'nin kimlik/iş incelemesi onaylanıp mağaza gerçek Live moda geçtiğinde son bir kontrol: `test_mode: false` ile gelen ilk gerçek webhook'u doğrula.
+
 ## Faz 7 — Lansman Sonrası (backlog, MVP dışı)
 - [ ] İlk 10 kullanıcıdan geri bildirim turu → PRD v2 kararları
 - [ ] PRD §5'teki Out-of-Scope listesi buradan önceliklendirilecek (AI özet, win-back e-postaları, Paddle desteği...)
