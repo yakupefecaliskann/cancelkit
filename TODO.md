@@ -117,7 +117,7 @@
 - [x] Lemon Squeezy (Test mode): store `CancelKit` + `CancelKit Pro` ürünü ($29/ay tek variant, MVP kısıtına uygun) oluşturuldu, API key + Store ID + Variant ID + webhook (`/api/webhooks/lemonsqueezy`, imzalı secret) Vercel env'e girildi (2026-07-11). Live moda geçiş, iş bilgileri + yasal sayfalar tamamlanınca yapılacak.
 - [x] Yasal sayfalar: `/privacy`, `/terms`, `/refund` yazıldı ve yayınlandı (`app/privacy`, `app/terms`, `app/refund` + ortak `components/legal/legal-shell.tsx`), footer'a linklendi, sitemap'e eklendi (2026-07-11)
 - [x] Destek e-postası: ayrı bir domain e-postası kurmak yerine kişisel e-posta (`efecaliskan3458@gmail.com`, `lib/site.ts`'te `SUPPORT_EMAIL`) footer'a ve yasal sayfalara eklendi — bilinçli tercih, sıfır ekstra kurulum
-- [ ] Uçtan uca canlı smoke test: kayıt → gerçek Stripe test hesabı → snippet → cancel flow → offer accept → dashboard → gerçek LS checkout
+- [x] Uçtan uca canlı smoke test (2026-07-11, prod'da): magic-link kayıt (Resend teslimatı doğrulandı) → proje oluşturma → gerçek Stripe test-mode restricted key bağlama/doğrulama → snippet/allowed origins → widget (survey → "Stay for 20% off" teklifi → accept → Stripe'a gerçek `discounts` objesi uygulandı, abonelik `active` kaldı) → Sessions/Overview'da doğru "Saved" kaydı + $29 kurtarılan MRR + %100 save rate → Lemon Squeezy test-mode checkout ($29, test kartı) → 3 webhook (`subscription_created/updated/payment_success`) sırayla işlendi → `profiles.subscription_status` `active` oldu, trial/upgrade banner'ı kayboldu. **Bulunan ve düzeltilen hata:** snippet'te hardcoded `cdn.cancelkit.io` (bkz. yukarıdaki commit).
 - [ ] (Opsiyonel) Sentry veya benzeri temel hata izleme
 
 ## Faz 7 — Lansman Sonrası (backlog, MVP dışı)
