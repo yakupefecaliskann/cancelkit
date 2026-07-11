@@ -12,10 +12,10 @@
 - [x] Supabase projesi oluştur (cloud) + lokal `supabase` CLI bağlantısı — cloud proje `cancelkit` (us-east-1) açıldı, 5 migration (4 mevcut + 1 yeni advisor düzeltmesi) uygulandı, `get_advisors` taraması temiz (2026-07-11)
 - [x] Veritabanı migration'larını yaz (ARCHITECTURE §5: profiles, projects, offers, survey_reasons, cancel_sessions, webhook_events + RLS politikaları + profiles trigger'ı) — 3 migration dosyası, `supabase start` ile hatasız uygulandı
 - [x] Env yapısı: `.env.local` + `.env.example` (ARCHITECTURE §7'deki tüm değişkenler) — lokal Supabase anahtarlarıyla dolduruldu
-- [ ] Vercel projesi oluştur, preview deploy'un çalıştığını doğrula
+- [x] Vercel projesi oluştur, preview deploy'un çalıştığını doğrula — `cancelkit` projesi GitHub reposuna bağlı import edildi, production deploy `READY`, custom domain `cancelkit.site` bağlandı ve `NEXT_PUBLIC_APP_URL` ile senkronize edildi (2026-07-11)
 
 ## Faz 1 — Auth & Onboarding
-- [x] Supabase Auth: e-posta magic link + Google OAuth + `/auth/callback` route'u — `@supabase/ssr` ile; magic link Mailpit üzerinden uçtan uca test edildi. Google OAuth kod yolu hazır ve doğru redirect_uri üretiyor, ancak gerçek Google OAuth client id/secret projeye tanımlı olmadığı için canlı buton tıklaması test edilemedi (altyapı/kimlik bilgisi gerektirir, kapsam dışı)
+- [x] Supabase Auth: e-posta magic link + Google OAuth + `/auth/callback` route'u — `@supabase/ssr` ile; magic link Mailpit üzerinden uçtan uca test edildi. Google OAuth: Google Cloud Console'da OAuth consent screen (Testing) + Web client oluşturuldu, Supabase Auth Providers'a client id/secret girildi, authorized origin/redirect URI `cancelkit.site` ile senkronize (2026-07-11) — not: consent screen "Testing" modunda, genel kullanıcıya açmak için Google'ın "Publish App" onayı lansman sonrasına bırakıldı
 - [x] Auth middleware: `/app/*` korumalı, oturumsuz kullanıcı login'e yönlenir — `middleware.ts` + `lib/supabase/middleware.ts`; oturumsuz erişim denenip `/login?redirectTo=...`'a yönlendiği doğrulandı
 - [x] Dashboard iskeleti: sidebar (Overview, Sessions, Offers, Survey, Settings) + üst bar — proje seçici (çoklu proje destekli) + kullanıcı menüsü (sign out) çalışır durumda
 - [x] Proje oluşturma akışı (`projects` kaydı + `pk_live_` key üretimi + varsayılan 6 anket nedeni seed) — uçtan uca test edildi; Survey sayfasında 6 varsayılan neden gerçek DB'den doğrulandı
