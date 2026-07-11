@@ -4,11 +4,12 @@ import { useState } from "react";
 import { Check, Copy } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
+import { SITE_URL } from "@/lib/site";
 
 export function SnippetBox({ publishableKey }: { publishableKey: string }) {
   const [copied, setCopied] = useState(false);
 
-  const snippet = `<script src="https://cdn.cancelkit.io/v1.js" data-key="${publishableKey}" defer></script>`;
+  const snippet = `<script src="${SITE_URL}/v1.js" data-key="${publishableKey}" defer></script>`;
 
   async function handleCopy() {
     try {

@@ -49,7 +49,7 @@
 ### 3.1 Kurulum (müşterimiz yapar)
 ```html
 <!-- 1. Snippet — </body> öncesine -->
-<script src="https://cdn.cancelkit.io/v1.js" data-key="pk_live_xxx" defer></script>
+<script src="https://cancelkit.site/v1.js" data-key="pk_live_xxx" defer></script>
 
 <!-- 2. İptal butonunu işaretle (Yöntem A) -->
 <button data-cancelkit data-ck-customer="cus_stripe_id">İptal Et</button>
