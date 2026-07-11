@@ -111,6 +111,15 @@
 ### Kapanış
 - [x] Lokal testler yeşil: `npm run lint` (temiz), `npm run test:unit` (29/29), `npm run build` (typecheck dahil başarılı, widget 4.1KB gzip), `npm run test:e2e` (2/2).
 
+## Faz 6.6 — Lansmana Hazırlık (Operasyonel, panel işlemleri)
+> Faz 0/1'de kodu yazdık; burada geriye kalan "sadece panelden yapılan" canlıya alma adımlarını takip ediyoruz. Git/Supabase Cloud/Vercel/domain/Google OAuth zaten Faz 0-1'de işaretlendi.
+- [x] Custom SMTP (Resend): `cancelkit.site` domaini Resend'de doğrulandı (Vercel DNS auto-configure ile), Supabase Auth → SMTP Settings'e `smtp.resend.com:465` + API key ile bağlandı (2026-07-11). Uçtan uca teslimat testi henüz yapılmadı — canlı smoke test adımında doğrulanacak.
+- [ ] Lemon Squeezy: store + ürün (`$29/ay`, `$290/yıl`) oluştur, Test modunda doğrula, webhook kaydet, Live moda al
+- [ ] Yasal sayfalar: Privacy Policy, Terms of Service, Refund Policy yazılıp yayınlanacak (Lemon Squeezy MoR onayı için zorunlu)
+- [ ] Destek e-postası (support@cancelkit.site veya benzeri) kurulup footer'a eklenecek
+- [ ] Uçtan uca canlı smoke test: kayıt → gerçek Stripe test hesabı → snippet → cancel flow → offer accept → dashboard → gerçek LS checkout
+- [ ] (Opsiyonel) Sentry veya benzeri temel hata izleme
+
 ## Faz 7 — Lansman Sonrası (backlog, MVP dışı)
 - [ ] İlk 10 kullanıcıdan geri bildirim turu → PRD v2 kararları
 - [ ] PRD §5'teki Out-of-Scope listesi buradan önceliklendirilecek (AI özet, win-back e-postaları, Paddle desteği...)
