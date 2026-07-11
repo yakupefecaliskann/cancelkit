@@ -8,7 +8,7 @@
 ## Faz 0 — Kurulum & İskelet
 - [x] Next.js 15 projesini init et (TypeScript, App Router, Tailwind v4, ESLint) — v15.5.20 pinlendi (npm'de güncel olan v16 yerine, ARCHITECTURE.md kararına sadık kalındı)
 - [x] shadcn/ui kurulumu + tema token'larını UI_UX_GUIDELINES §2'ye göre yapılandır (Inter + JetBrains Mono dahil) — `app/globals.css` slate/indigo/success/warning token'larıyla güncellendi
-- [ ] Git repo init + `.gitignore` + GitHub'a push (private) — `.gitignore` hazır (env + supabase local artifacts eklendi), repo init/push henüz yapılmadı
+- [x] Git repo init + `.gitignore` + GitHub'a push (private) — repo `github.com/yakupefecaliskann/cancelkit` (private), `main` branch, ilk commit push edildi (2026-07-11)
 - [ ] Supabase projesi oluştur (cloud) + lokal `supabase` CLI bağlantısı — yalnızca **lokal** CLI kuruldu ve doğrulandı; cloud proje henüz açılmadı
 - [x] Veritabanı migration'larını yaz (ARCHITECTURE §5: profiles, projects, offers, survey_reasons, cancel_sessions, webhook_events + RLS politikaları + profiles trigger'ı) — 3 migration dosyası, `supabase start` ile hatasız uygulandı
 - [x] Env yapısı: `.env.local` + `.env.example` (ARCHITECTURE §7'deki tüm değişkenler) — lokal Supabase anahtarlarıyla dolduruldu
