@@ -352,6 +352,7 @@ export default function Home() {
             </Link>
             <a
               href={`mailto:${SUPPORT_EMAIL}`}
+              title={SUPPORT_EMAIL}
               className="hover:text-foreground"
             >
               Support
