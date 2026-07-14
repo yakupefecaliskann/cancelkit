@@ -1,6 +1,6 @@
 # CancelKit — Go-To-Market Stratejisi
 
-> Son güncelleme: 2026-07-14 (günlük etkileşim turu) · Durum: Pre-Launch (Lemon Squeezy KYC onayı bekleniyor)
+> Son güncelleme: 2026-07-14 akşam (günlük etkileşim turu) · Durum: Pre-Launch (Lemon Squeezy KYC onayı bekleniyor)
 > Bu dosya, CMO Eylem Planı (mesaj şablonları, platform kuralları) ile VP of Growth 30 Günlük Momentum Planı'nın birleştirilmiş, kalıcı halidir.
 
 ---
@@ -225,3 +225,12 @@ Büyüme/pazarlama işi **"canlı ortak oturum"** modeliyle yürütülür: kulla
 - **Product Hunt:** Agentcard for companies'e (bugünün launch'ı, ajanlara tek-kullanımlık bütçe-sınırlı debit kart) upvote + yorum — tek-kullanımlık kart/bütçe modelinin CancelKit'in tek-kullanımlık Stripe kupon idempotency-key mantığıyla paralelliği üzerinden teknik bir soru.
 - **Reddit:** r/indiehackers'da u/kev_habits'in "I Got A Premium User in 30 days...but they cancelled" postuna (deneme kullanıcısı 33 saat sonra iptal etmiş, kurucu neden/nasıl önlenir diye soruyor) — iptal anında müdahalenin (exit-survey + anlık teklif) sonradan mesaj göndermekten neden daha etkili olduğunu açıklayan, CancelKit'i bağlam olarak anan detaylı yorum.
 - **Genel not:** Dünkü (07-13 akşam) 4 hedefin hiçbirine tekrar gidilmedi — 4 yeni taze hedef (Prime AI/Amazon Iliad, RecoverFlow, Agentcard, kev_habits'in cancel postu) kullanıldı. IH'de "Day 4 — designing what happens when a survey DOESN'T work out" postu incelendi ama konusu (ücretli anket platformu UX'i) CancelKit'in alanına yeterince yakın olmadığı için bilinçli olarak atlandı, RecoverFlow tercih edildi.
+
+### 2026-07-14 — Akşam turu
+
+- **X:** @SiftId'nin (32 dk önce atılmış, "viable idea = insanların gerçekten para ödeyeceği şekilde çözüm" temalı) tweet'ine yanıt — viability testinin gerçek anının signup değil, cancel butonuna tıklanan an olduğunu vurgulayan teknik yorum.
+- **Indie Hackers:** melic'in (7 saat önce) "IT governance checklist'i canlı araca çevirdim, kimse ister mi bilmiyorum" postuna yorum — "come back to it a second time" sorusunun aslında bir churn sorusu olduğunu, hipotetik "evet"ten çok terk anındaki davranışın daha güvenilir sinyal olduğunu anlatan, CancelKit'i bağlam olarak anan teknik yorum.
+- **Product Hunt:** Bugünün launch'ı **Sales Studio**'ya (canlı satış demoları için macOS aracı) upvote + yorum — satışın "evet" anını cilalayan bu aracın CancelKit'in cilaladığı "hayır" anıyla (cancel butonu) simetrik olduğunu vurgulayan yorum.
+- **Reddit:** Önce r/SaaS'ta çok taze (2 dk önce) ve tam konumuz olan "users aren't churning because product is bad, they never reached value" postu bulundu, ancak comment kutusuna tıklarken bilinen klavye-kısayolu sorunu tekrar yaşandı (yanlışlıkla post hidden oldu, undo ile düzeltildi) VE r/SaaS'ın hesap-yaşı kısıtı hâlâ aktif olduğu için ("You can't contribute in this community yet") yorum yapılamadı — hedef değiştirildi. r/startups'ta "Should we offer a free 7-day trial A/B test" postuna (60% kullanıcının sahte kredi kartı vererek trial'dan sessizce çıktığı bulgusu) yorum bırakıldı: bu sinyalin, ödeyen müşterinin cancel anında verdiği sinyalle aynı aileden olduğunu, ikisinin ayrı loglanması gerektiğini anlatan, ürün adı geçmeyen (r/startups "no promotion" kuralına uygun) teknik bir yorum.
+- **Teknik not — Reddit klavye-kısayolu sorunu güncellemesi:** [[cancelkit-gtm-routine]]'deki bilinen sorun bugün de tekrarlandı: yorum kutusuna tıklandığında kutu odaklanmış gibi görünse de (placeholder "Join the conversation" hâlâ duruyor) aslında odaklanmamış olabiliyor, bu durumda yazılan metin sayfa geneli klavye kısayolu olarak yorumlanıyor ("h" → post hidden, "?" → Keyboard Shortcuts dialogu açıldı). **Güvenilir doğrulama:** tıklamadan sonra ekran görüntüsü al, kutunun gerçekten genişleyip alt formatting toolbar'ının (GIF, Aa, Cancel/Comment butonları) göründüğünü doğrula — sadece placeholder metnin görünür olması yeterli kanıt değil.
+- **Genel not:** Sabahki (07-14 sabah) 4 hedefin hiçbirine tekrar gidilmedi — 4 yeni taze hedef (SiftId, melic, Sales Studio, r/startups trial-A/B postu) kullanıldı.
