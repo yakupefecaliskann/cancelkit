@@ -21,9 +21,9 @@ export default async function LoginPage({
           <CardDescription>Sign in to manage your save offers and cancel sessions.</CardDescription>
         </CardHeader>
         <CardContent>
-          {error === "google_oauth_failed" && (
+          {(error === "google_oauth_failed" || error === "auth_callback_failed") && (
             <p className="mb-4 text-sm text-destructive">
-              Google sign-in failed. Please try again or use a magic link.
+              Sign-in failed. Please try again or use a magic link.
             </p>
           )}
           <LoginForm />

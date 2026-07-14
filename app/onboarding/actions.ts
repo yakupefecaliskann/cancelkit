@@ -37,7 +37,8 @@ export async function createProject(
     .single();
 
   if (error || !project) {
-    return { status: "error", message: error?.message ?? "Could not create project." };
+    console.error("[cancelkit] project create failed:", error?.message);
+    return { status: "error", message: "Could not create your project. Please try again." };
   }
 
   redirect(`/onboarding/connect?project=${project.id}`);
@@ -64,14 +65,23 @@ export async function connectStripeKey(
     return { status: "error", message: validation.message };
   }
 
+  let encryptedKey: string;
+  try {
+    encryptedKey = encrypt(secretKey);
+  } catch (err) {
+    console.error("[cancelkit] onboarding Stripe key encryption failed:", err);
+    return { status: "error", message: "We couldn't securely store your key. Please try again." };
+  }
+
   const supabase = await createClient();
   const { error } = await supabase
     .from("projects")
-    .update({ encrypted_stripe_key: encrypt(secretKey) })
+    .update({ encrypted_stripe_key: encryptedKey })
     .eq("id", projectId);
 
   if (error) {
-    return { status: "error", message: error.message };
+    console.error("[cancelkit] onboarding Stripe key update failed:", error.message);
+    return { status: "error", message: "We couldn't save your key. Please try again." };
   }
 
   redirect(`/onboarding/snippet?project=${projectId}`);
@@ -102,7 +112,8 @@ export async function updateAllowedOrigins(
     .eq("id", projectId);
 
   if (error) {
-    return { status: "error", message: error.message };
+    console.error("[cancelkit] allowed origins update failed:", error.message);
+    return { status: "error", message: "We couldn't save your allowed origins. Please try again." };
   }
 
   revalidatePath("/app/settings");
