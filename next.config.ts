@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { withSentryConfig } from "@sentry/nextjs";
 
 const nextConfig: NextConfig = {
   async headers() {
@@ -32,4 +33,14 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default withSentryConfig(nextConfig, {
+  silent: true,
+  org: process.env.SENTRY_ORG,
+  project: process.env.SENTRY_PROJECT,
+  // No source-map upload token yet — build stays a plain Next.js build until
+  // SENTRY_AUTH_TOKEN is set (see .env.example), so this is safe with no Sentry account.
+  widenClientFileUpload: false,
+  sourcemaps: {
+    disable: !process.env.SENTRY_AUTH_TOKEN,
+  },
+});
