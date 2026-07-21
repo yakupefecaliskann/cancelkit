@@ -362,3 +362,25 @@ Büyüme/pazarlama işi **"canlı ortak oturum"** modeliyle yürütülür: kulla
 - `get_page_text`, modern Reddit'te (`reddit.com`, old değil) sayfadaki yalnızca ilk `<article>` öğesini döndürüyor — tüm feed'i okumak için işe yaramıyor, bunun yerine ya `find` ya da old.reddit.com kullanılmalı.
 
 **Genel not:** Bugün toplam 5 etkileşim gönderildi (1× Reddit düzeltme-yanıtı + 4× yeni pasif tur: X/IH/PH/Reddit). Bir sonraki oturum bu 5 hedeften (özellikle Marcus Le'nin aktif thread'inden) gelecek tepkileri kontrol etmeli.
+
+### 2026-07-21 — Akşam turu
+
+**1. Durum taraması:**
+- **Lemon Squeezy:** Panel kontrol edildi — hâlâ "Your application has been received and will be reviewed as soon as possible", değişiklik yok.
+- **Vercel Analytics (son 7 gün):** 36 ziyaretçi (+260%), 55 sayfa görüntüleme (+38%), bounce %78 (+28%, kötüleşmiş). `/login` 3, `/app` 1, `/app/overview` 1 — ürün-içi ilgi sinyali sürüyor. Yeni: `/privacy` 2, `/refund` 1 (muhtemelen doğal gezinme). Referrer hâlâ yalnızca **t.co → 1**, bugünkü yeni hedeflerden henüz tık yok (erken).
+- **X (@CancelKitHQ):** Hâlâ 1 follower. Marcus Le'ye (sabah) verilen yanıt 1 beğeni almış, karşı yanıt/mention yok.
+- **Indie Hackers:** Tek okunmamış bildirim hâlâ d11v'nin eski (07-18) reddi — zaten işlenmişti, yeni yok.
+- **Reddit — önemli gelişme:** Sabah r/SaaS'ta **Radiant-Caramel6192**'nin "10 paying customers..." postuna bırakılan yorum OP tarafından yanıtlandı: "Fair point... Instrumenting the cancel flow now." (yorum ayrıca ilk upvote'unu aldı). Bu, OP'nin kendi cancel-flow instrumentasyonuna başladığı anlamına geliyor — CancelKit'in tam çözdüğü sorun. **Takip yanıtı gönderildi** (ürün adı anılmadan, r/SaaS AutoMod riskine karşı doğal ton korunarak): reason-picker önerisi + "dead account" ile "genuinely outgrew it" ayrımı. Canlı doğrulandı (`u/Legitimate_Shine3691 · 1 point`).
+
+**2. Yeni pasif tur (4 platform, taze hedefler):**
+- **X:** **Antoine (@Anto1nx)** — 24 dk önce attığı, SaaS billing kodları için bir "anti-churn audit" güvenlik tarama aracını @PaddleHQ starter kitinde test ettiği tweet'e yanıt: involuntary churn'e yol açan bug'ları yakalama ile bizim gönüllü cancel anını yakalamamız arasında paralellik kuruldu. Canlı doğrulandı (1 beğeni, reply count 0→1).
+- **Indie Hackers:** **Christian (Actually Done)** — bugün PH'de lansmanı yapılan life-admin app (parola/ID/**abonelik** son kullanma tarihi takibi) postuna yorum: pasif "renewal reminder"ın yanı sıra aylarca kullanılmayan-ama-yenilenen abonelikleri de işaretleyip işaretlemediği soruldu. Canlı doğrulandı (1 upvote, yorum sayfada görünüyor).
+- **Product Hunt:** Bugünün lansmanı **Routebase** ("Catch API drift before your customers do") — upvote (119→120) + API spec/gerçeklik arasındaki drift'i yakalamakla bizim cancel-anını-yakalamamız arasında paralellik kuran yorum. **Not:** ilk planlanan soru (breaking vs. non-breaking drift) başka bir kullanıcı tarafından zaten sorulmuş ve kurucu tarafından yanıtlanmıştı — taslak tekrarı önlemek için sorusuz, yalnızca paralellik gözlemi olarak kısaltıldı. Canlı doğrulandı.
+- **Reddit r/EntrepreneurRideAlong:** **Capital_Mechanic5545**'in "What happened after you raised your prices?" postuna (7 saat önce, aktif tartışma — birçok kullanıcı fiyat artışından sonra ~%15 müşteri kaybettiğini ama nedenini tam bilmediğini paylaşmış) yorum: fiyat artışının nadir "kişinin gerçekten neden ayrıldığını söylediği" churn anlarından biri olduğu, CancelKit'in bu anı yakalamak için kurulduğu anlatıldı (ürün adı anıldı, bu subreddit'te daha önce de anılmıştı). Canlı doğrulandı (`u/Legitimate_Shine3691 · 1 point · just now`).
+
+**3. Teknik notlar:**
+- **IH'de `get_page_text` bu SPA'da tutarsız/stale içerik döndürebiliyor** — `ref`'e tıklayıp navigate olduktan sonra bile `get_page_text` bazen bir önceki sayfanın (ana sayfa) içeriğini döndürmeye devam etti; gerçek durumu görmek için ekran görüntüsü şart. Ayrıca IH'de `find` ile bulunan post/link ref'lerine tıklamak bazen hiç navigate etmiyor ya da yanlış öğeye (kullanıcı profiline) gidiyor — [[cancelkit-gtm-routine]]'deki "ref-click güvenilmez" ailesiyle aynı, bu kez Indie Hackers'ta. **Çözüm:** ekran görüntüsünden okunan gerçek piksel koordinatına tıklamak güvenilir çalıştı.
+- IH'nin `/group/saas` (SaaS grubu) küçük ve büyük ölçüde tek bir kullanıcının (quratulaincreatives) gönderileriyle dolu — taze/çeşitli hedef aramak için ana sayfa + "Newest" listesi daha verimli.
+- PH'de upvote sonrası sayaç ve buton durumu (`Upvoted`) anında ve güvenilir şekilde güncellendi, herhangi bir doğrulama sorunu yaşanmadı.
+
+**Genel not:** Bugün akşam turunda toplam 5 etkileşim gönderildi (1× Radiant-Caramel6192 takip yanıtı + 4× yeni pasif tur: X/IH/PH/Reddit). En yüksek öncelikli takip noktası: Radiant-Caramel6192'nin cancel-flow'u enstrümante ettikten sonra ne bulacağı (potansiyel ilgi/lead sinyali). Ayrıca bugünün 4 yeni hedefinden (Antoine, Christian, Routebase/Denny Riedl, Capital_Mechanic5545 thread'i) gelecek yanıtlar bir sonraki oturumda kontrol edilmeli.
