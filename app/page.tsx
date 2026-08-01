@@ -54,12 +54,12 @@ const steps = [
 ];
 
 const features = [
-  "14-day free trial, no card required",
+  "No card required, ever",
   "Unlimited cancel sessions",
   "Native Stripe integration (discounts + pause)",
   "Exit survey with custom reasons",
   "Recovered MRR dashboard",
-  "Cancel anytime",
+  "Live in under 10 minutes",
 ];
 
 const faqs = [
@@ -79,9 +79,9 @@ const faqs = [
       "The embed script is under 30KB gzipped, loads asynchronously, and doesn't pull in any fonts or external stylesheets. It only renders when a customer clicks cancel.",
   },
   {
-    question: "What happens after the 14-day trial?",
+    question: "What does CancelKit cost?",
     answer:
-      "If you don't upgrade, the widget stops opening on your site (your cancel button still works — it just falls back to your normal flow) and your dashboard shows an upgrade prompt. No surprise charges.",
+      "Nothing. CancelKit is free to use — there's no paid plan, no trial to run out, and no card to enter. The widget shows a small \"Powered by CancelKit\" badge on your cancel flow.",
   },
   {
     question: "Who is CancelKit built for?",
@@ -121,7 +121,7 @@ export default function Home() {
               nativeButton={false}
               className="bg-white text-[#0f172a] hover:bg-slate-200"
             >
-              Start free trial
+              Get started free
             </Button>
           </div>
         </div>
@@ -156,7 +156,7 @@ export default function Home() {
                 size="lg"
                 className="h-11 gap-2 bg-primary px-6 text-base hover:bg-primary/90"
               >
-                Start your 14-day free trial
+                Get started — it&apos;s free
                 <ArrowRight className="size-4" />
               </Button>
               <Button
@@ -262,22 +262,22 @@ export default function Home() {
       <section id="pricing" className="mx-auto max-w-6xl px-6 py-24">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl">
-            Simple, predictable pricing
+            Free to use
           </h2>
           <p className="mt-3 text-muted-foreground">
-            One plan. No per-seat pricing, no usage tiers.
+            No paid plan, no seat count, no usage tiers. Every feature is
+            included.
           </p>
         </div>
         <Card className="mx-auto mt-12 max-w-md border-primary/20 shadow-lg ring-1 ring-primary/10">
           <CardHeader className="items-center text-center">
             <CardTitle className="text-base font-medium text-muted-foreground">
-              Pro
+              Everything, free
             </CardTitle>
             <div className="mt-2 flex items-baseline justify-center gap-1">
               <span className="text-5xl font-semibold tracking-tight tabular-nums">
-                $29
+                $0
               </span>
-              <span className="text-muted-foreground">/month</span>
             </div>
           </CardHeader>
           <CardContent className="flex flex-col gap-6">
@@ -295,7 +295,7 @@ export default function Home() {
               size="lg"
               className="h-11 w-full text-base"
             >
-              Start your 14-day free trial
+              Create your free account
             </Button>
           </CardContent>
         </Card>

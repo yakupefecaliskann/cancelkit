@@ -9,7 +9,7 @@
     "lint": "eslint",
     "build:widget": "node widget/build.mjs",
     "dev:widget": "node widget/build.mjs --watch",
-    "test:unit": "node --test lib/stripe-mrr.test.ts lib/analytics.test.ts lib/billing.test.ts",
+    "test:unit": "node --test lib/stripe-mrr.test.ts lib/analytics.test.ts",
     "test:e2e": "playwright test"
   },
   "dependencies": {
@@ -46,5 +46,11 @@
     "eslint-config-next": "15.5.20",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "allowScripts": {
+    "@sentry/cli@2.58.6": true,
+    "esbuild@0.28.1": true,
+    "sharp@0.34.5": true,
+    "unrs-resolver@1.12.2": true
   }
 }

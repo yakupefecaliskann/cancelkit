@@ -1,9 +1,7 @@
 import { signOut } from "@/app/(dashboard)/app/actions";
 import { MobileNav } from "@/components/dashboard/mobile-nav";
 import { ProjectSwitcher } from "@/components/dashboard/project-switcher";
-import { UpgradeButton } from "@/components/dashboard/upgrade-button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Badge } from "@/components/ui/badge";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,47 +11,16 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import type { BillingState } from "@/lib/billing";
 import type { Project } from "@/lib/types";
-
-function BillingIndicator({ billing }: { billing: BillingState }) {
-  if (billing.plan === "trial") {
-    return (
-      <div className="flex items-center gap-2">
-        <Badge variant="outline" className="hidden font-normal text-muted-foreground sm:inline-flex">
-          Trial · {billing.trialDaysLeft} {billing.trialDaysLeft === 1 ? "day" : "days"} left
-        </Badge>
-        <Badge variant="outline" className="font-normal text-muted-foreground sm:hidden">
-          {billing.trialDaysLeft}d left
-        </Badge>
-        <UpgradeButton>
-          <span className="hidden sm:inline">Upgrade to Pro</span>
-          <span className="sm:hidden">Upgrade</span>
-        </UpgradeButton>
-      </div>
-    );
-  }
-  if (billing.plan === "past_due") {
-    return (
-      <Badge className="bg-warning/10 font-normal text-warning">
-        <span className="hidden sm:inline">Payment issue — check your billing email</span>
-        <span className="sm:hidden">Payment issue</span>
-      </Badge>
-    );
-  }
-  return null;
-}
 
 export function Topbar({
   projects,
   activeProjectId,
   userEmail,
-  billing,
 }: {
   projects: Project[];
   activeProjectId: string;
   userEmail: string;
-  billing: BillingState;
 }) {
   const initial = userEmail.charAt(0).toUpperCase() || "?";
 
@@ -68,8 +35,6 @@ export function Topbar({
       </div>
 
       <div className="flex items-center gap-2 sm:gap-4">
-        <BillingIndicator billing={billing} />
-
         <DropdownMenu>
           <DropdownMenuTrigger className="outline-none">
             <Avatar className="size-8 cursor-pointer">

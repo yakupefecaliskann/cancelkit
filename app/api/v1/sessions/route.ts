@@ -2,11 +2,7 @@ import { customAlphabet } from "nanoid";
 import { NextRequest, NextResponse } from "next/server";
 import { createServiceClient } from "@/lib/supabase/service";
 import { isSessionCreateRateLimited } from "@/lib/rate-limit";
-import {
-  authenticateWidgetRequest,
-  corsHeaders,
-  resolveOwnerBillingState,
-} from "@/lib/widget-auth";
+import { authenticateWidgetRequest, corsHeaders } from "@/lib/widget-auth";
 import type { Offer } from "@/lib/types";
 
 const generateSessionToken = customAlphabet(
@@ -35,16 +31,6 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       { error: auth.reason },
       { status: auth.reason === "invalid_key" ? 401 : 403, headers: corsHeaders(origin) },
-    );
-  }
-
-  // Config is edge-cached for 5 minutes, so a just-expired trial can still
-  // have a live widget holding a cached config; this gate closes that window.
-  const billing = await resolveOwnerBillingState(auth.project);
-  if (!billing.widgetEnabled) {
-    return NextResponse.json(
-      { error: "subscription_inactive" },
-      { status: 403, headers: corsHeaders(origin) },
     );
   }
 

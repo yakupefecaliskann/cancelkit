@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function PrivacyPolicyPage() {
   return (
-    <LegalShell title="Privacy Policy" effectiveDate="July 11, 2026">
+    <LegalShell title="Privacy Policy" effectiveDate="August 1, 2026">
       <p>
         CancelKit (&quot;CancelKit&quot;, &quot;we&quot;, &quot;us&quot;) is
         operated as an individual sole proprietorship based in Turkey. This
@@ -20,7 +20,7 @@ export default function PrivacyPolicyPage() {
       <LegalSection heading="1. Data we collect">
         <p>From you, as a CancelKit customer:</p>
         <ul className="flex flex-col gap-2 pl-5 [&>li]:list-disc">
-          <li>Your account email address (used for login and billing).</li>
+          <li>Your account email address (used for login and support).</li>
           <li>
             Your Stripe restricted API key, encrypted at rest with
             AES-256-GCM before it ever reaches our database. We never see or
@@ -73,16 +73,12 @@ export default function PrivacyPolicyPage() {
             <strong>Vercel</strong> — hosts the application and widget.
           </li>
           <li>
-            <strong>Lemon Squeezy</strong> — processes your subscription
-            payment as our merchant of record (see our{" "}
-            <a href="/terms" className="underline underline-offset-2">
-              Terms of Service
-            </a>
-            ).
-          </li>
-          <li>
             <strong>Resend</strong> — delivers transactional emails (login
             links, account notifications).
+          </li>
+          <li>
+            <strong>Sentry</strong> — collects application error reports so we
+            can diagnose failures.
           </li>
           <li>
             <strong>Stripe</strong> — your own Stripe account, which you

@@ -14,11 +14,13 @@
 | Veritabanı + Auth | **Supabase** (Postgres, Auth, RLS) | Ücretsiz katman MVP'ye yeter; magic link + Google OAuth hazır. |
 | Hosting | **Vercel** (Hobby → Pro) | Sıfır DevOps, edge network'ten widget servisi. |
 | Müşterinin ödemesi | **Stripe Node SDK** | Müşterinin kendi Stripe hesabında kupon/pause uygularız. |
-| Bizim faturalamamız | **Lemon Squeezy** (Merchant of Record) | Vergi/KDV/fatura bürokrasisi sıfır (Anayasa madde 3). |
-| Transactional e-posta | **Resend** (opsiyonel, Faz 5+) | Trial hatırlatma vb.; MVP'nin ilk sürümünde zorunlu değil. |
+| Bizim faturalamamız | **Yok — ürün ücretsiz** | Ödeme sağlayıcısı yok; ödeme almadığımız için vergi/KDV/MoR bürokrasisi de yok (2026-08-01 kararı, aşağıya bkz.). |
+| Transactional e-posta | **Resend** | Magic link teslimatı (Supabase Auth custom SMTP). |
 | Widget build | **esbuild** | `widget/` klasöründeki vanilla TS'i tek dosyaya (`public/v1.js`) derler. |
 
-**Maliyet projeksiyonu (0-100 müşteri):** Vercel Hobby $0 → Pro $20/ay · Supabase Free $0 → Pro $25/ay · Lemon Squeezy %5+50¢/işlem · Domain ~$12/yıl. **Başlangıç sabit maliyet ≈ $1/ay.**
+**Maliyet projeksiyonu (0-100 kullanıcı):** Vercel Hobby $0 → Pro $20/ay · Supabase Free $0 → Pro $25/ay · Domain ~$12/yıl. **Başlangıç sabit maliyet ≈ $1/ay.**
+
+**Faturalama kararı (2026-08-01):** Ürün Lemon Squeezy üzerinden ücretli bir katmanla tasarlanmıştı; LS mağazası hiç Live moda geçmedi (KYC onaylanmadı) ve hiçbir hesap ücretlendirilmedi. LS entegrasyonu (checkout, webhook, trial kilidi, upgrade duvarı) tamamen kaldırıldı ve **yerine başka bir ödeme sağlayıcısı konmadı** — CancelKit şu an herkes için ücretsiz. Widget'taki "Powered by CancelKit" rozeti artık her zaman açık.
 
 ---
 
@@ -37,9 +39,9 @@
 │  1) Anket → 2) Teklif      │          │  Supabase (Postgres + Auth)     │
 └────────────────────────────┘          │        │                        │
                                         │        ▼                        │
-                    ┌───────────────────┤  Stripe API (müşterinin hesabı) │
-                    │ Lemon Squeezy ────┤  kupon uygula / pause et        │
-                    │ (bizim abonelik)  └─────────────────────────────────┘
+                                        │  Stripe API (müşterinin hesabı) │
+                                        │  kupon uygula / pause et        │
+                                        └─────────────────────────────────┘
 ```
 
 ---
@@ -86,9 +88,9 @@ Dashboard, Next.js server actions + Supabase client (RLS) ile çalışır; ayrı
 3. **Şifreleme:** Stripe key'leri AES-256-GCM ile, Vercel env'deki `ENCRYPTION_KEY` kullanılarak şifrelenip saklanır. Düz metin key asla loglanmaz, client'a asla dönmez.
 4. **Origin allowlist:** Her projede `allowed_origins` listesi; `pk_` ile gelen istekler `Origin` header'ına karşı doğrulanır.
 5. **Tenant izolasyonu:** Tüm tablolarda Supabase **RLS**: `user_id = auth.uid()` zinciri. Widget API'leri service-role ile çalışır ama her sorgu `pk_` → `project_id` çözümünden geçer.
-6. **Idempotency:** Lemon Squeezy webhook'ları `webhook_events` tablosuna event id ile yazılır; tekrar gelen event işlenmez. İmza (`X-Signature`) doğrulanır.
+6. **Idempotency:** Gelen webhook'lar `webhook_events` tablosuna event id ile yazılır; tekrar gelen event işlenmez. LS kaldırıldığından şu an bu tabloya yazan bir üretici yok — tablo, ileride bir sağlayıcı eklenirse hazır dursun diye korunuyor.
 7. **Rate limiting:** Widget endpoint'lerinde IP + pk bazlı basit limit (Upstash gerekmez; MVP'de in-memory/Vercel KV yeterli değilse Supabase tablosu).
-8. **Abonelik kapısı (Faz 5):** Widget'ın giriş noktaları (`/api/v1/config` + `POST /api/v1/sessions`) proje sahibinin faturalama durumuna bağlıdır (`lib/billing.ts`): trial süresi dolmuş veya abonelik `cancelled` ise 403 `subscription_inactive` döner ve widget müşteri sitesinde açılmaz (widget bu durumda `onContinueCancel` ile kontrolü müşterinin kendi iptal akışına bırakır — buton asla ölmez). LS status eşlemesi: `on_trial/active/cancelled(dönem sonuna dek)` → active, `expired` → cancelled, `past_due/unpaid/paused/bilinmeyen` → past_due (fail-soft; dunning sırasında widget çalışmaya devam eder). "Powered by CancelKit" rozeti config'teki `poweredByBadge` ile ücretsiz/trial hesaplarda gösterilir, `active`'te kaldırılır. Checkout LS API'siyle server-side oluşturulur: e-posta prefill body'de taşınır (URL'de değil) ve `custom.user_id` webhook'un aboneliği profile eşlemesini sağlar.
+8. **Abonelik kapısı — KALDIRILDI (2026-08-01):** Widget giriş noktalarında (`/api/v1/config` + `POST /api/v1/sessions`) proje sahibinin faturalama durumuna bakan kapı vardı; trial dolunca 403 `subscription_inactive` dönerdi. Ürün ücretsizleştiği için bu kapı, `lib/billing.ts` ve profil sorgusu tamamen kaldırıldı — widget her zaman açılır ve config `poweredByBadge: true` döner. Erişim kontrolü artık yalnızca `pk_` anahtarı + `Origin` allowlist'idir (madde 4).
 
 ---
 
@@ -99,11 +101,10 @@ Dashboard, Next.js server actions + Supabase client (RLS) ile çalışır; ayrı
 profiles (
   id            uuid PK REFERENCES auth.users,
   email         text NOT NULL,
-  ls_customer_id      text,             -- Lemon Squeezy customer
-  ls_subscription_id  text,
-  subscription_status text NOT NULL DEFAULT 'trialing',  -- trialing|active|past_due|cancelled
-  trial_ends_at timestamptz NOT NULL DEFAULT now() + interval '14 days',
   created_at    timestamptz DEFAULT now()
+  -- Kalıntı sütunlar (kod okumuyor, ürün ücretsiz): subscription_status,
+  -- trial_ends_at, past_due_since. ls_* sütunları
+  -- 20260801120000_drop_lemonsqueezy_columns.sql ile düşürüldü.
 )
 
 projects (
@@ -156,9 +157,10 @@ cancel_sessions (
   resolved_at   timestamptz
 )
 
+-- Şu an yazan üretici yok (LS kaldırıldı); ileride bir sağlayıcı eklenirse diye duruyor.
 webhook_events (
-  id          text PK,               -- LS event id (idempotency anahtarı)
-  source      text NOT NULL DEFAULT 'lemonsqueezy',
+  id          text PK,               -- event id (idempotency anahtarı)
+  source      text NOT NULL DEFAULT 'lemonsqueezy',   -- kalıntı default
   type        text NOT NULL,
   payload     jsonb NOT NULL,
   processed_at timestamptz DEFAULT now()
@@ -179,10 +181,9 @@ Saas/
 │   ├── (marketing)/         # landing, pricing — public
 │   ├── (dashboard)/app/     # auth'lu panel: overview, sessions, offers, settings
 │   ├── api/v1/              # widget API (config, sessions)
-│   ├── api/webhooks/lemonsqueezy/
 │   └── auth/                # Supabase auth callback
 ├── components/              # shadcn/ui + ortak bileşenler
-├── lib/                     # supabase client'ları, stripe, crypto, ls
+├── lib/                     # supabase client'ları, stripe, crypto
 ├── widget/                  # vanilla TS widget kaynağı (ayrı tsconfig)
 │   └── src/index.ts         # esbuild → public/v1.js
 ├── supabase/migrations/     # SQL migration'ları (şema yukarıda)
@@ -199,8 +200,9 @@ Saas/
 NEXT_PUBLIC_SUPABASE_URL / NEXT_PUBLIC_SUPABASE_ANON_KEY
 SUPABASE_SERVICE_ROLE_KEY          # yalnızca server
 ENCRYPTION_KEY                     # 32 byte, Stripe key şifreleme
-LEMONSQUEEZY_API_KEY / LEMONSQUEEZY_WEBHOOK_SECRET / LEMONSQUEEZY_STORE_ID / LEMONSQUEEZY_VARIANT_ID
 NEXT_PUBLIC_APP_URL
+SENTRY_DSN / NEXT_PUBLIC_SENTRY_DSN                   # opsiyonel (DSN yoksa no-op)
+SENTRY_ORG / SENTRY_PROJECT / SENTRY_AUTH_TOKEN       # opsiyonel, source map upload
 ```
 
 ## 8. Bilinçli Ertelemeler (teknik borç değil, karar)

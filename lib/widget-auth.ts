@@ -1,7 +1,6 @@
 import "server-only";
-import { computeBillingState, type BillingState } from "@/lib/billing";
 import { createServiceClient } from "@/lib/supabase/service";
-import type { CancelSession, Profile, Project } from "@/lib/types";
+import type { CancelSession, Project } from "@/lib/types";
 
 export const CORS_ALLOWED_METHODS = "GET, POST, OPTIONS";
 export const CORS_ALLOWED_HEADERS = "Content-Type";
@@ -67,27 +66,6 @@ export async function authenticateWidgetRequest(
     return { ok: false, reason: "origin_not_allowed" };
   }
   return { ok: true, project };
-}
-
-/**
- * Billing state of the project OWNER (our customer, not their end-customer).
- * Widget entry points (config, session create) answer 403 when this says
- * widgetEnabled=false, so an expired trial never shows the widget on the
- * customer's site. A missing profile fails open — a data glitch on our side
- * must not break a customer's cancel button.
- */
-export async function resolveOwnerBillingState(project: Project): Promise<BillingState> {
-  const supabase = createServiceClient();
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("subscription_status, trial_ends_at, past_due_since")
-    .eq("id", project.user_id)
-    .maybeSingle<Pick<Profile, "subscription_status" | "trial_ends_at" | "past_due_since">>();
-
-  if (!profile) {
-    return { plan: "pro", trialDaysLeft: 0, showBadge: true, widgetEnabled: true };
-  }
-  return computeBillingState(profile);
 }
 
 /**

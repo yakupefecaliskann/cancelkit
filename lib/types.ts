@@ -1,17 +1,13 @@
-import type { SubscriptionStatus } from "@/lib/billing";
-
 export type Profile = {
   id: string;
   email: string;
-  ls_customer_id: string | null;
-  ls_subscription_id: string | null;
-  subscription_status: SubscriptionStatus;
-  trial_ends_at: string;
-  /** Timestamp of the last Lemon Squeezy event applied — guards against out-of-order webhooks. */
-  ls_last_event_at: string | null;
-  /** When the account first entered past_due; escalates to locked after a grace window. */
-  past_due_since: string | null;
   created_at: string;
+  /** Left over from the removed paid tier. The columns still exist on the table
+   *  (see the drop_lemonsqueezy_columns migration for what was removed); nothing
+   *  reads them — CancelKit is free and the widget is always enabled. */
+  subscription_status: string;
+  trial_ends_at: string;
+  past_due_since: string | null;
 };
 
 export type Project = {

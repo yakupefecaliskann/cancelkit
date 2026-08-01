@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function TermsOfServicePage() {
   return (
-    <LegalShell title="Terms of Service" effectiveDate="July 11, 2026">
+    <LegalShell title="Terms of Service" effectiveDate="August 1, 2026">
       <p>
         These terms govern your use of CancelKit, a hosted service that lets
         you add an exit survey and a Stripe-powered save offer to your
@@ -39,21 +39,17 @@ export default function TermsOfServicePage() {
         </p>
       </LegalSection>
 
-      <LegalSection heading="3. Subscription, billing, and trial">
+      <LegalSection heading="3. The service is free">
         <p>
-          CancelKit is billed at $29/month after a 14-day free trial. No
-          payment method is required to start the trial. Your subscription
-          is billed and processed by{" "}
-          <strong>Lemon Squeezy</strong>, our Merchant of Record — Lemon
-          Squeezy is the seller of record for all CancelKit orders, handles
-          payment processing, sales tax/VAT, and invoicing, and your purchase
-          contract for the subscription is with Lemon Squeezy, not directly
-          with CancelKit. You can cancel your subscription at any time from
-          the dashboard; see our{" "}
-          <a href="/refund" className="underline underline-offset-2">
-            Refund Policy
-          </a>{" "}
-          for how charges are handled.
+          CancelKit is free to use. There is no paid plan, no trial period
+          that expires, and no payment method is required to create or keep
+          an account. We do not process payments from you and we do not hold
+          any billing information about you beyond your account email.
+        </p>
+        <p className="mt-2">
+          We may introduce paid plans in the future. If we do, we will give
+          you notice by email first, and your account will never be charged
+          unless you explicitly sign up for a paid plan.
         </p>
       </LegalSection>
 
@@ -101,18 +97,18 @@ export default function TermsOfServicePage() {
         <p>
           To the maximum extent permitted by law, CancelKit&apos;s total
           liability arising out of or related to these terms or the service
-          will not exceed the amount you paid us in the three months
-          preceding the claim, and we will not be liable for any indirect,
-          incidental, or consequential damages, including lost revenue or
-          lost profits.
+          will not exceed one hundred US dollars (US$100), and we will not be
+          liable for any indirect, incidental, or consequential damages,
+          including lost revenue or lost profits. CancelKit is provided to
+          you free of charge.
         </p>
       </LegalSection>
 
       <LegalSection heading="8. Termination">
         <p>
-          You may stop using CancelKit and cancel your subscription at any
-          time. We may suspend or terminate accounts that violate these
-          terms, including abusive use of the API or widget.
+          You may stop using CancelKit and delete your account at any time
+          from the dashboard. We may suspend or terminate accounts that
+          violate these terms, including abusive use of the API or widget.
         </p>
       </LegalSection>
 
@@ -137,7 +133,7 @@ export default function TermsOfServicePage() {
           These terms are governed by the laws of the Republic of Turkey,
           without regard to conflict-of-law principles, except where
           mandatory consumer-protection laws in your own jurisdiction apply
-          to your purchase through Lemon Squeezy as Merchant of Record.
+          regardless of that choice.
         </p>
       </LegalSection>
 

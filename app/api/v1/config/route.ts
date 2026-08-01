@@ -1,10 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createServiceClient } from "@/lib/supabase/service";
-import {
-  authenticateWidgetRequest,
-  corsHeaders,
-  resolveOwnerBillingState,
-} from "@/lib/widget-auth";
+import { authenticateWidgetRequest, corsHeaders } from "@/lib/widget-auth";
 import type { Offer, SurveyReason } from "@/lib/types";
 
 export async function OPTIONS(request: NextRequest) {
@@ -21,16 +17,6 @@ export async function GET(request: NextRequest) {
     return NextResponse.json(
       { error: auth.reason },
       { status: auth.reason === "invalid_key" ? 401 : 403 },
-    );
-  }
-
-  const billing = await resolveOwnerBillingState(auth.project);
-  if (!billing.widgetEnabled) {
-    // Trial over / subscription expired: the widget must never open on the
-    // customer's site. Not cached, so re-activating takes effect immediately.
-    return NextResponse.json(
-      { error: "subscription_inactive" },
-      { status: 403, headers: corsHeaders(origin) },
     );
   }
 
@@ -52,7 +38,9 @@ export async function GET(request: NextRequest) {
   const body = {
     projectId: auth.project.id,
     accentColor: auth.project.accent_color,
-    poweredByBadge: billing.showBadge,
+    // CancelKit is free for everyone, so the badge is always on — there is no
+    // paid tier left that could remove it.
+    poweredByBadge: true,
     reasons: (reasons ?? []).map((r: Pick<SurveyReason, "id" | "label">) => ({
       id: r.id,
       label: r.label,

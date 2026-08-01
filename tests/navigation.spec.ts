@@ -25,16 +25,16 @@ test.describe("Landing page — CTAs and links", () => {
   // base-ui's nativeButton={false}, exposes them with role="button" (an anchor
   // driven as a button). We assert the underlying href so a CTA can never point
   // at nothing, regardless of the ARIA role it carries.
-  test("every primary CTA points at the trial signup (/login)", async ({ page }) => {
-    // Header "Start free trial", hero + pricing "Start your 14-day free trial"
-    // are all trial entry points and must resolve to /login.
-    const trialCtas = page.getByRole("button", {
-      name: /Start (free trial|your 14-day free trial)/,
+  test("every primary CTA points at signup (/login)", async ({ page }) => {
+    // Header "Get started free", hero "Get started — it's free", pricing
+    // "Create your free account" are all free-signup entry points → /login.
+    const signupCtas = page.getByRole("button", {
+      name: /Get started|Create your free account/,
     });
-    const count = await trialCtas.count();
+    const count = await signupCtas.count();
     expect(count).toBeGreaterThanOrEqual(3);
     for (let i = 0; i < count; i++) {
-      await expect(trialCtas.nth(i)).toHaveAttribute("href", "/login");
+      await expect(signupCtas.nth(i)).toHaveAttribute("href", "/login");
     }
   });
 
@@ -45,8 +45,8 @@ test.describe("Landing page — CTAs and links", () => {
     await expect(demoCtas.last()).toHaveAttribute("href", "/demo");
   });
 
-  test("header 'Start free trial' actually navigates to the login page", async ({ page }) => {
-    await page.getByRole("button", { name: "Start free trial" }).click();
+  test("header 'Get started free' actually navigates to the login page", async ({ page }) => {
+    await page.getByRole("button", { name: "Get started free" }).click();
     await expect(page).toHaveURL(/\/login$/);
     await expect(page.getByRole("button", { name: "Send magic link" })).toBeVisible();
   });

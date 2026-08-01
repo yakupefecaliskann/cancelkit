@@ -4,51 +4,39 @@ import { SUPPORT_EMAIL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Refund Policy",
-  description: "How refunds work for CancelKit subscriptions.",
+  description: "CancelKit is free to use, so there are no charges and nothing to refund.",
 };
 
 export default function RefundPolicyPage() {
   return (
-    <LegalShell title="Refund Policy" effectiveDate="July 11, 2026">
-      <LegalSection heading="14-day free trial">
+    <LegalShell title="Refund Policy" effectiveDate="August 1, 2026">
+      <LegalSection heading="CancelKit is free">
         <p>
-          Every CancelKit account starts with a 14-day free trial and no
-          payment method is required to begin it. You will not be charged
-          anything until you actively upgrade to a paid subscription from the
-          dashboard, so there is nothing to refund during the trial — you can
-          simply stop using the service.
+          CancelKit does not charge for the service. There is no paid plan, no
+          trial that turns into a subscription, and no payment method is
+          required to create or keep an account — so there is nothing to
+          refund. You can stop using CancelKit or delete your account at any
+          time from the dashboard.
         </p>
       </LegalSection>
 
-      <LegalSection heading="After you've been charged">
+      <LegalSection heading="If you see a charge from us">
         <p>
-          If you upgrade and change your mind, email us at{" "}
+          We have no way to bill you and we do not store any payment details,
+          so a charge described as coming from CancelKit did not originate
+          from us. Email us at{" "}
           <a href={`mailto:${SUPPORT_EMAIL}`} className="underline underline-offset-2">
             {SUPPORT_EMAIL}
           </a>{" "}
-          within 7 days of the charge and we&apos;ll issue a full refund, no
-          questions asked. After 7 days, we don&apos;t offer prorated refunds
-          for partial billing periods, but you can cancel anytime from the
-          dashboard to stop future charges — you&apos;ll keep access until
-          the end of the period you already paid for.
+          and we&apos;ll help you identify where it actually came from.
         </p>
       </LegalSection>
 
-      <LegalSection heading="Billing errors">
+      <LegalSection heading="If we introduce paid plans later">
         <p>
-          Duplicate charges or other billing mistakes are always corrected in
-          full, regardless of how much time has passed — just email us and
-          we&apos;ll sort it out.
-        </p>
-      </LegalSection>
-
-      <LegalSection heading="How refunds are processed">
-        <p>
-          Subscription payments are processed by{" "}
-          <strong>Lemon Squeezy</strong>, our Merchant of Record, so approved
-          refunds are issued by Lemon Squeezy back to your original payment
-          method. Refunds typically appear within 5–10 business days,
-          depending on your bank or card issuer.
+          If CancelKit ever adds a paid plan, we will publish the refund terms
+          on this page before taking any payments, and no existing account
+          will be charged without explicitly signing up for a paid plan first.
         </p>
       </LegalSection>
     </LegalShell>
