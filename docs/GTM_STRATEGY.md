@@ -1,36 +1,43 @@
 # CancelKit — Go-To-Market Stratejisi
 
-> Son güncelleme: 2026-08-01 (Lemon Squeezy kaldırıldı, ürün kalıcı ücretsiz; Reddit hesabı banlandığı için rotasyondan çıkarıldı) · Durum: Canlı yayında, ücretsiz ürün — ödeme sağlayıcısı yok
+> Son güncelleme: 2026-08-02 (**Strateji revizyonu** — 20 günlük veri analizi sonrası: agresif outreach durduruldu, Product Hunt günlük turdan çıkarıldı, günlük tur 1×/gün'e indirildi, kalıcı varlık üretimi eklendi) · Durum: Canlı yayında, kalıcı ücretsiz ürün — ödeme sağlayıcısı yok, **lansman henüz yapılmadı**
 > Bu dosya, CMO Eylem Planı (mesaj şablonları, platform kuralları) ile VP of Growth 30 Günlük Momentum Planı'nın birleştirilmiş, kalıcı halidir.
+> **Güncel strateji için önce Bölüm 9-11'i oku** (veri analizi, yeni ritim, standart oturum prompt'ları). Bölüm 1-8 bu revizyona göre güncellenmiştir.
 
 ---
 
 ## 1. Bağlam ve Kilit Çerçeve
 
-CancelKit'in teknik/altyapı tarafı bitti (bkz. TODO.md Faz 6.8): widget, Stripe entegrasyonu, Supabase, Lemon Squeezy checkout/webhook akışı uçtan uca doğrulandı. Tek açık madde, Lemon Squeezy'nin KYC/kimlik-iş incelemesinin onaylanıp mağazanın Live moda geçmesi.
+CancelKit'in teknik/altyapı tarafı bitti (bkz. TODO.md Faz 6.8 ve 6.9): widget, Stripe entegrasyonu, Supabase uçtan uca canlı. **Lemon Squeezy 2026-08-01'de tamamen kaldırıldı; ürün kalıcı olarak ücretsizdir, ödeme sağlayıcısı yoktur, trial kilidi yoktur.**
 
-**Kilit çerçeve:** "Henüz tam yayında değil" bir zayıflık değil, **"Founding Member / Erken Erişim"** anlatısına çevrilecek bir avantajdır. Hiçbir dış mesajda ürünün "eksik/bozuk" olduğu izlenimi verilmez — doğru çerçeve: *"finishing up billing/payment setup"*. Bu dürüst ve profesyoneldir, güven kırmaz.
+**Tek açık madde artık lansmandır.** Lansmanın tamamı (Bölüm 5 ve 6) eskiden "LS Live moda geçtiği an" tetikleyicisine bağlıydı; LS kaldırılınca bu kilit yapısal olarak açıldı ama yeni bir lansman tarihi planlanmamıştı. 2026-08-02 revizyonuyla lansman **en yüksek öncelikli açık iş** haline getirildi (bkz. Bölüm 9.4 Faz 1).
+
+**Kilit çerçeve (2026-08-02'de güncellendi):** Eski "Founding Member / Erken Erişim + launch sonrası fiyat" çerçevesi **geçersizdir** — kıtlık, indirim ve fiyat çıpası kaldıraçlarının üçü de ücretsiz modelle birlikte ortadan kalktı. Yeni çerçeve: **"Ücretsiz, kredi kartı yok, tek satır script."** Ürün canlıdır ve herkese açıktır; hiçbir mesajda "henüz yayında değil", "billing setup", "beta", "early access spot" veya indirim/fiyat vaadi geçmez.
 
 **Hedef kitle:** İndie/bootstrap SaaS kurucuları, $500–$20.000 MRR aralığında, Stripe (subscription mode) kullananlar.
 
 **Ürün konumlandırma:** *"Turn cancellations into saved revenue."* — İptal butonuna 1 satır script, exit survey + Stripe destekli anlık kurtarma teklifi (indirim/dondurma).
 
+**Ücretsiz modelin GTM sonucu:** Satın alma kararı ortadan kalktığı için 1-e-1 ikna (DM/outreach) en yüksek değerini kaybetti; kalan sürtünme "script'i kur" adımıdır ve bu bireysel ikna değil **görünürlük + güven** problemidir. Bu nedenle bütçe yayın kanallarına (lansman, kalıcı içerik, dizinler) kaydırılmıştır.
+
 **Tüm dış iletişim İngilizce olmalı** — hedef kitle küresel ve baskın dili İngilizce.
 
 ---
 
-## 2. Platform Durumu (2026-07-12 itibarıyla)
+## 2. Platform Durumu (2026-08-02 itibarıyla)
 
-| Platform | Hesap | Durum |
-|---|---|---|
-| **X (Twitter)** | [@CancelKitHQ](https://x.com/CancelKitHQ) | Profil tam (banner, CK monogram avatar, bio). 1 build-in-public tweet'i yayında. 3 hesap takip edildi (@HansShaibu, @theprettydev, @WOkparaji74619) — 2026-07-12'de üçüne de taze build-in-public postlarına beğeni + özgün yorum bırakıldı. Hesap hâlâ "graduated access" kısıtı altında (X: yeni hesaplar daha az görünür, takip etmediği kişilere DM atamaz — Reddit'teki hesap yaşı kısıtına benzer). |
-| **Indie Hackers** | [indiehackers.com/efecaliskan](https://www.indiehackers.com/efecaliskan) | Gerçek isim/fotoğrafla profil tam. Churn/renewal konulu bir foruma teknik yorum bırakıldı. 2026-07-12: brka'nın "132 users, 3 current customers, and a renewal failure I should have prevented" postuna (billing-flow hatası vs. gerçek churn ayrımı — CancelKit'in tam konusu) beğeni + detaylı yorum bırakıldı. |
-| **Product Hunt** | Kişisel profil (Yakup Efe Çalışkan) | Profil tam. SoundPipe ürününe upvote+yorum, "5 tools" forum thread'ine yanıt verildi. 2026-07-12: bugün launch olan **FetchSandbox** (API/webhook entegrasyon testi, Stripe dahil) ürününe upvote + kendi Stripe idempotency-key mimarimizi paylaşan teknik yorum bırakıldı. Not: rakip/komşu ürün **ChurnDog**'un (involuntary churn/failed-payment recovery, 1 yıl önce launch) sayfası bulundu ama eski bir launch'a CancelKit pazarlamak spam gibi görüneceğinden bilinçli olarak atlandı. |
+| Platform | Hesap | Rutindeki rolü | Durum |
+|---|---|---|---|
+| **X (Twitter)** | [@CancelKitHQ](https://x.com/CancelKitHQ) | **Günlük tur — 1 hedef/gün** | Profil tam (banner, CK monogram avatar, bio). Bio linki UTM'li (`?utm_source=twitter&utm_medium=social&utm_campaign=bio`). 20 günlük ölçüm: ~19 etkileşim → 0 yanıt, ~4 beğeni, **1 follower**, ölçülen tek sosyal tık (t.co → 1) buradan geldi. **DM Premium olmadan imkânsız** ("Only verified users can send DM requests") — hedefi takip etmek çözmüyor. "Graduated access" kısıtı hâlâ aktif. |
+| **Indie Hackers** | [indiehackers.com/efecaliskan](https://www.indiehackers.com/efecaliskan) | **Günlük tur — 1 hedef/gün (birincil konuşma kanalı)** | Gerçek isim/fotoğrafla profil tam. 20 günlük ölçüm: ~17 etkileşim → **3 yanıt (~%18, kalan kanalların en yükseği)**. **Native DM özelliği yok.** **Tıklanabilir website link alanı yok** — UTM ölçümü yapısal olarak imkânsız (07-17'de denendi, geri alındı). Site içi arama çalışmıyor; hedef taraması ana sayfa + "Newest" ile yapılır. |
+| **Product Hunt** | Kişisel profil (Yakup Efe Çalışkan) | **Günlük turdan ÇIKARILDI (2026-08-02)** — yalnızca lansman | Profil tam, "Additional links → Website" UTM'li. 20 günlük ölçüm: **~13 upvote+yorum → 0 yanıt, 0 tık**. Neden kayıtlı: PH'de "replies to me" için ayrı bildirim akışı yok, günlük launch yorumları okunmuyor. **PH'nin değeri günlük yorumda değil, lansmandadır** — Bölüm 5. Not: rakip/komşu ürün **ChurnDog** (involuntary churn/failed-payment recovery, 1 yıl önce launch) referans olarak biliniyor; eski bir launch'a CancelKit pazarlamak spam görüneceği için bilinçli atlanıyor. |
 | **Reddit** | Hesap **BANLANDI** (2026-08-01'de fark edildi) — KALICI OLARAK ROTASYONDAN ÇIKARILDI | ~~Yeni hesap (görünen ad: "Efe - Building CancelKit")~~. Reddit hesabı (banlandığı için) şimdilik rutinlerden çıkarıldı. İleride isteğe bağlı olarak yeni bir hesapla tekrar eklenebilir. 2026-08-01'den itibaren günlük 4-platform turu artık yalnızca X / Indie Hackers / Product Hunt'ı kapsıyor (3 platform). Eski hesap geçmişi (4 subreddit üyeliği, r/EntrepreneurRideAlong/r/SaaS yorumları) referans için aşağıdaki günlükte duruyor ama artık aktif değil. |
 
 ---
 
 ## 3. Platform Kuralları (Kritik — Her Paylaşımdan Önce Kontrol Et)
+
+> **Not (2026-08-02):** Aşağıdaki tablodaki tüm **subreddit satırları şu an pasiftir** — Reddit hesabı banlı, platform rotasyonda değil. Bu satırlar, ileride yeni bir hesapla Reddit'e dönülürse (Bölüm 9.3, Kanal #5) doğrudan kullanılabilsin diye referans olarak korunuyor. Aktif kurallar: **X**, **Indie Hackers**, **Product Hunt** satırları.
 
 | Platform/Subreddit | Kural | Not |
 |---|---|---|
@@ -68,92 +75,113 @@ The problem: someone clicks "Cancel" and you never find out why, and never get a
 chance to save them. CancelKit drops a 1-line script on your cancel button:
 exit survey + instant Stripe-powered save offer.
 
-Live in under 10 min. Shipping this week.
+Free, no card, no paid tier. Live in under 10 min.
 ```
 
-### Şablon B — Indie Hackers "Founder Diary" ilk post
+### Şablon B — Indie Hackers "Founder Diary" postu
 
-Başlık: **"Building a churn-prevention tool because my own SaaS was leaking MRR at cancel"**
+> 2026-08-02'de ücretsiz modele göre yeniden yazıldı — eski versiyondaki "Lemon Squeezy / early access spots / before public launch" dili kaldırıldı.
+
+Başlık: **"I built a churn-prevention tool, then deleted the billing code and made it free"**
 
 ```
-Hey IH — first post here. I've been building CancelKit, a tiny widget that
-sits in front of your Stripe cancel flow: quick exit-survey + an instant
-save offer (discount or pause) before someone actually cancels.
+Hey IH. I've been building CancelKit, a tiny widget that sits in front of
+your Stripe cancel flow: quick exit-survey + an instant save offer (discount
+or pause) before someone actually cancels.
 
 Backstory: I kept losing subscribers I could've saved with a 20% discount
 for 2 months, but I had zero visibility into *why* they were leaving and
 no easy way to intervene. Built CancelKit to fix that for myself first.
 
-Currently in final setup with billing (Lemon Squeezy) before public launch —
-opening up a small number of early access spots this week for indie/
-bootstrap Stripe SaaS founders who want to try it before the public launch
-and help shape the roadmap. Happy to answer questions about the build.
+I originally built a full billing layer on top of it. I ended up ripping it
+out entirely — putting cancel-reason data behind a paywall made no sense for
+a tool whose whole point is that almost nobody measures this. It's free now,
+no card, no paid tier, one line of script.
+
+Happy to answer questions about the build (Stripe webhook ordering and
+idempotency were the genuinely hard parts).
 ```
 
-### Şablon C — "Sıcak DM" (birinin postuna yorum yaptıktan 2-3 gün sonra)
+### Şablon C — Tetiklenmiş takip (birisi churn/cancel-flow acısını açıkça beyan ettiğinde)
+
+> **Kullanım koşulu:** Yalnızca hedef, iptal/churn sorununu kendi ağzıyla dile getirdiğinde kullanılır (07-21'deki Radiant-Caramel6192 kalıbı). Proaktif soğuk temas için **kullanılmaz** — bkz. Bölüm 9.2.
 
 ```
-Hey [isim] — following up from [konuştuğumuz konu/post]. I've been building
-something that might be relevant to [şirket adı]: a small widget for your
-Stripe cancel flow that shows an exit survey + instant save offer (discount
-or pause) before someone cancels.
+Following up on your [konu] post — I ended up building the thing I was
+describing: a one-line script for your Stripe cancel button that shows an
+exit survey + an instant save offer (discount/pause) before the cancel goes
+through. It's free, no card, no paid tier — I removed billing entirely
+because locking cancel-reason data behind a plan made no sense.
 
-Still finishing up billing setup, so it's not public yet — but I'm opening
-a handful of early access spots to founders like you before launch, free
-during the beta, in exchange for feedback. Want me to send you the details?
+If you want to instrument your cancel flow without writing it yourself,
+happy to send the snippet.
 ```
 
-### Şablon D — "Soğuk ama value-first" DM
+### Şablon D — Public reply'da kısa ürün anması (X, 280 karakter altı)
+
+> X'te DM kapalı olduğu için (Premium gerekiyor) ürün anması yalnızca public reply içinde, yorumun doğal bir parçası olarak yapılır. Yorumun kendisi teknik değer taşımalı; ürün anması tek cümleyi geçmemeli.
 
 ```
-Hey [isim] — saw your post about churn/cancellations at [şirket]. I've been
-building CancelKit, a lightweight widget for exactly that: exit survey +
-instant Stripe save offer on your cancel button, live in ~10 min.
+[Hedefin noktasına dair 1-2 cümlelik özgün teknik gözlem.]
 
-Not public yet (finishing billing setup) but I'm giving a few early access
-spots to founders dealing with this right now — free during beta. Worth a
-quick look?
+Built CancelKit for exactly this — exit survey + instant save offer on the
+cancel button. It's free now, no card.
 ```
 
 ### Mesajlaşma Kuralları
-- Asla "henüz çalışmıyor/bozuk olabilir" ima etme — doğru çerçeve: *"finishing up billing/payment setup"*.
-- Her mesajda somut bir eylem çağrısı olsun (cevap ver, detay iste).
-- İlk 48 saatte hedef: satış değil, "evet ilgileniyorum" cevabı toplamak. Bunları bir listede tut, LS onayı gelince founding-member indirim koduyla toplu duyuru at.
+
+> 2026-08-02'de ücretsiz modele göre revize edildi.
+
+- **ASLA indirim, early-access, beta, founding-member veya gelecekte fiyatlanacak ima verme** — ürün kalıcı olarak ücretsizdir. Eski "founding-member indirim kodu" kuralı ve "ilk 10'a ömür boyu %30" teklifi **tamamen geçersizdir** (dayandığı üç kaldıraç — kıtlık, indirim, fiyat çıpası — ücretsiz modelle birlikte ortadan kalktı).
+- **ASLA "henüz yayında değil" / "finishing up billing/payment setup" deme** — bu çerçeve bayattır, ürün canlıdır. Doğru çerçeve: *"free, no card, one line of script."*
+- Asla "henüz çalışmıyor/bozuk olabilir" ima etme.
+- Değer önce gelir: yorumun kendisi ürün olmadan da faydalı olmalı. Ürün adı yalnızca doğal bağlamda, tek cümlede geçer.
+- Link ilk temasta paylaşılmaz.
+- Miktar değil kalite: 1 yüksek kaliteli yorum, 5 düşük kaliteliden değerlidir.
+- **Birincil hedef metrik "tık" değil "alınan yanıt"tır** — warm engagement'ın ölçülen çıktısı trafik değil konuşmadır (bkz. Bölüm 9.1).
 
 ---
 
 ## 5. Product Hunt & Launch Platformu Hazırlığı
 
-1. **Product Hunt profili:** Kişisel profil hazır. "Upcoming" ürün taslağı henüz açılmadı — launch görselleri netleştiğinde açılacak.
-2. **Launch görselleri:** Logo (CK monogramı mevcut, gerçek logo ile değiştirilebilir), 3-5 ürün ekran görüntüsü/GIF, tagline: *"Turn cancellations into saved revenue"*.
+> **2026-08-02 — KİLİT AÇILDI.** Bu bölüm eskiden "LS onayı geldiğinde" tetikleyicisine bağlıydı. Lemon Squeezy 08-01'de tamamen kaldırıldı, dolayısıyla **lansmanı bekleten hiçbir teknik veya finansal engel kalmadı.** Ürün canlı ve ücretsiz. Lansman artık dokümandaki **en yüksek öncelikli açık iştir** — 07-12'den beri "hazırlanıyor" durumunda bekliyor ve hiç yapılmadı.
+
+1. **Product Hunt profili:** Kişisel profil hazır. **"Upcoming" ürün taslağı hâlâ açılmadı — Faz 1'in ilk maddesi budur.**
+2. **Launch görselleri:** Logo (CK monogramı mevcut, gerçek logo ile değiştirilebilir), 3-5 ürün ekran görüntüsü/GIF (widget'ın cancel butonunda tetiklenmesi → exit survey → save offer → dashboard), tagline: *"Turn cancellations into saved revenue — free, one line of code."*
 3. **"Hunter" bulma:** PH'de tanınmış indie hacker/hunter hesaplarını takip et, postlarına anlamlı yorumlar bırak (SoundPipe maker'ı Chris Battarbee gibi bağlantılar bu amaçla değerli).
-4. **Indie Hackers "Product" sayfası:** Şimdiden "draft/coming soon" olarak eklenebilir.
-5. **Launch günü metni taslağı:** PH açıklaması + ilk yorum (kurucu hikayesi) + IH launch postu — LS onayı geldiğinde hazır olmalı.
+4. **Indie Hackers "Product" sayfası:** Lansman günü canlıya alınacak şekilde şimdiden hazırlanmalı.
+5. **Launch günü metni taslağı:** PH açıklaması + ilk yorum (kurucu hikayesi) + IH launch postu + X thread. **Kurucu hikayesinde LS/KYC bekleme anlatısı kullanılmaz**; kullanılacak anlatı: "billing katmanını yazdım, sonra tamamen sildim ve ürünü ücretsiz yaptım" (Şablon B ile aynı çerçeve).
+6. **Lansman tarihi:** Salı veya Çarşamba önerilir (PH'de rekabet en düşük). Tarih belirlendiğinde bu satıra yazılır → **Belirlenen tarih: _(henüz seçilmedi)_**.
+7. **"Ücretsiz" PH'de en güçlü diferansiyatördür** — tagline, ilk yorum ve galeri görsellerinin hepsinde "free, no card" açıkça görünmeli.
 
 ---
 
 ## 6. Launch Sonrası Eylem Takvimi
 
-### Gün 0 (Launch Günü — LS Live moda geçtiği an)
-1. Sıcak listeye (DM/yorumla ilgi göstermiş kişiler) kişisel launch duyurusu + founding-member indirim kodu.
-2. X'te launch tweet'i (thread formatında — problem → çözüm → canlı link).
-3. Product Hunt "Upcoming" sayfası varsa canlıya al; yoksa launch et. İlk yorumu kendin (kurucu hikayesi) yaz.
-4. r/indiehackers'a (izinli formatta) launch postu.
-5. Indie Hackers'ta ayrı bir "founder diary" launch postu.
+### Gün 0 (Launch Günü — Bölüm 5.6'da belirlenen tarih)
+
+> Tetikleyici 2026-08-02'de değiştirildi: eski tetikleyici "LS Live moda geçtiği an"dı; LS kaldırıldığı için artık **takvime bağlı, kendi seçtiğimiz bir tarihtir**.
+
+1. **Product Hunt lansmanı** — "Upcoming" sayfası varsa canlıya al, yoksa doğrudan launch et. İlk yorumu kendin (kurucu hikayesi) yaz.
+2. **X'te launch thread'i** — problem → çözüm → "free, no card" → canlı link.
+3. **Indie Hackers "founder diary" launch postu** (Şablon B).
+4. **Indie Hackers "Product" sayfasını** canlıya al.
+5. **Geçmişte konuşulan kişilere kişisel bildirim** — indirim kodu **yok**; mesaj "artık ücretsiz ve canlı, konuştuğumuz sorunu çözüyor" çerçevesinde. Öncelikli liste: Radiant-Caramel6192 (cancel flow'u enstrümante ediyordu), quratulaincreatives (yaklaşımı açıkça övdü), LeoYang (Revova, tamamlayıcı ürün), brka. **d11v'ye yazılmaz** (07-18'de açıkça reddetti).
+6. ~~r/indiehackers'a launch postu~~ — **iptal**, Reddit hesabı banlı.
 
 ### Hafta 1 — Görünürlük İnşası
-- Günlük 1 X postu ritmi: gün aşırı build-in-public içeriği (metrik, öğrenilen ders, kullanıcı geri bildirimi), aradaki günler etkileşim (yorum/beğeni).
-- Her platformda 5-10 dakikalık günlük "warm engagement" turu — canlı ortak oturum modeliyle: gerçek postlara yorum, DM takibi.
-- İlk 3-5 gerçek kullanıcıdan (beta/erken erişim) testimonial iste.
+- Günlük tur (Bölüm 10 ritmi): X 1 + IH 1 hedef.
+- Gün aşırı build-in-public X postu: launch metrikleri, öğrenilen ders, kullanıcı geri bildirimi.
+- İlk 3-5 gerçek kullanıcıdan testimonial iste (ücretsiz olduğu için karşılığında verilecek indirim yok — talep doğrudan ve karşılıksız yapılır).
 
 ### Hafta 2-3 — Sosyal Kanıt Döngüsü
-- İlk gerçek metrikler (kaç kullanıcı, kaç "save" yakalandı) build-in-public içeriğine dönüşür — meta-anlatı: "CancelKit kendi churn'ünü CancelKit ile önlüyor."
-- r/SaaS gibi kısıtlı platformlarda artık hesap yaşı/karma yeterli olacağından, organik-görünüşlü ama samimi katkı sürdürülür (asla doğrudan link/reklam değil).
+- İlk gerçek metrikler (kaç kurulum, kaç "save" yakalandı) build-in-public içeriğine dönüşür — meta-anlatı: "CancelKit kendi churn'ünü CancelKit ile önlüyor."
 - İlk kullanıcı testimonial'ları X ve landing sayfaya eklenir.
+- Kalıcı varlık üretimi (Bölüm 9.4 Faz 2) haftalık blokta sürer.
 
 ### Hafta 4 — Değerlendirme ve Ayarlama
-- Hangi kanal gerçek trafik/kayıt getirdi, hangisi sadece "gürültü" oldu — kanal başına zaman yatırımını buna göre yeniden dağıt.
-- "Ay 1 Retro" içeriği üret (kaç deneme, kaç ücretli dönüşüm, hangi kanaldan geldiler).
+- Hangi kanal gerçek trafik/kayıt getirdi, hangisi sadece "gürültü" oldu — kanal başına zaman yatırımını buna göre yeniden dağıt (Bölüm 10'daki kanal-kapatma kuralı uygulanır).
+- "Ay 1 Retro" içeriği üret (kaç kurulum, hangi kanaldan geldiler).
 
 **Kritik prensip:** Bu 30 gün boyunca "canlı ortak oturum, onaylı paylaşım, platform kurallarına saygı" rutini aynen devam eder — sadece içerik "pre-launch merak uyandırma"dan "post-launch kanıt gösterme"ye evrilir.
 
@@ -164,7 +192,7 @@ quick look?
 | Zorluk | Alışkanlık / Çözüm |
 |---|---|
 | **Etkileşimsizlik** — ilk haftalarda çoğu post 0-2 etkileşimle geçer, bu normaldir. | Başarıyı "beğeni sayısı" değil "gönderilen içerik sayısı" ile ölç. Haftalık hedef: süreç metriği, sonuç metriği değil. |
-| **"Pazarlama churn'ü"** — 2 hafta sonra ilk heyecan azalınca rutin sessizce terk edilebilir (ironik biçimde CancelKit'in çözdüğü davranışın aynısı). | "Sendeyim" tetikleyicili canlı-oturum modelini günlük bir check-in'e dönüştür — her gün "bugün yaptık mı?" sorusu sorulmalı. |
+| **"Pazarlama churn'ü"** — 2 hafta sonra ilk heyecan azalınca rutin sessizce terk edilebilir (ironik biçimde CancelKit'in çözdüğü davranışın aynısı). **⚠️ BU ÖNGÖRÜ GERÇEKLEŞTİ:** en yoğun günün (07-21, çift tur, 10 etkileşim) hemen ardından **10 günlük tam boşluk** yaşandı (07-21 → 08-01). | 2026-08-02 düzeltmesi: günlük tur **2×/gün'den 1×/gün'e indirildi** ve ~30-45 dakikayla sınırlandı. Sürdürülen 1×/gün, terk edilen 2×/gün'den üstündür — ölçülen veride çift tur ek getiri sağlamamıştı (bkz. Bölüm 9.3). |
 | **Platform kural ihlali riski** — büyüme hırsıyla "bir kere link paylaşsam" dürtüsü hesap banına yol açabilir. | Bölüm 3'teki kural tablosunu her paylaşım öncesi kontrol et. |
 | **Otantiklik yorgunluğu** — hız kaygısıyla şablon gibi görünen içeriğe kayma riski. | Miktardan çok kalite: günde 1 yüksek kaliteli yorum, 5 düşük kaliteliden değerlidir. |
 | **Yalnız kurucu tükenmişliği** — tek başına hem ürün hem büyüme yürütmek. | Canlı ortak oturum modelini launch sonrası da koru — büyüme paylaşılan bir rutin olarak kalmalı, tek başına taşınan bir yük değil. |
@@ -175,13 +203,208 @@ quick look?
 
 Büyüme/pazarlama işi **"canlı ortak oturum"** modeliyle yürütülür: kullanıcı ne zaman "hazırım/sendeyim" derse, birlikte platformlarda paylaşım/yorum/beğeni yapılır. Akış: hedef içerik/thread önerilir, tam metin taslak olarak yazılır → kullanıcı onaylar → tarayıcıda gerçek işlem yapılır (yazma, upvote, gönderme). **Her paylaşım/yorum ayrı onay gerektirir** — toptan/otonom yetki yok (botlaşma/otomasyon tespiti riski nedeniyle bilinçli bir tercih).
 
-**Sıradaki adım:** LS onayı gelene kadar bu dosyadaki Bölüm 6 (Launch Sonrası Eylem Takvimi) referans alınarak günlük mini-etkileşim turlarına devam edilir; onay geldiğinde doğrudan "Gün 0" checklist'i uygulanır.
+**Sıradaki adım (2026-08-02'de güncellendi):** LS bağımlılığı ortadan kalktı. Sıradaki iş **Bölüm 9.4 Faz 1 — Product Hunt lansmanı**dır; paralelde Bölüm 10'daki günlük tur ritmi sürdürülür. Lansman tarihi geldiğinde Bölüm 6 "Gün 0" checklist'i uygulanır.
 
 ---
 
-## 9. Günlük Aktivite Günlüğü
+## 9. Strateji Revizyonu — 2026-08-02
 
-> Her günkü 4-platform turunun (X, Indie Hackers, Product Hunt, Reddit) ne yapıldığı burada kayıt altına alınır — hem tekrar/unutma riskini önlemek hem de bir sonraki oturumun kaldığı yerden devam edebilmesi için. Yeni gün başında en son kaydı oku, aynı postlara/kişilere tekrar gitme.
+> 20 günlük (2026-07-12 → 2026-08-01) kayıtlı veri analiz edilerek yapılan revizyon. Aşağıdaki tüm rakamlar bu dosyanın Bölüm 12'sindeki günlük kayıtlardan ve Vercel Analytics ölçümlerinden çıkarılmıştır.
+
+### 9.1 Ölçülen veri tabanı
+
+**Platform başına 20 günlük çıktı:**
+
+| Platform | Gönderilen etkileşim | Alınan yanıt | Yanıt oranı | Ölçülebilir tık | Lead |
+|---|---|---|---|---|---|
+| **Reddit** (artık banlı) | ~12 yorum | 6 | **~%50** | 0 | **1 yüksek niyetli** (Radiant-Caramel6192: "Instrumenting the cancel flow now") |
+| **Indie Hackers** | ~17 yorum | 3 | ~%18 | 0 (link alanı yok) | 0 |
+| **X** | ~19 yanıt + 2 post | 0 yanıt, ~4 beğeni | ~%0 | t.co → 1 | 0 (1 follower) |
+| **Product Hunt** | ~13 upvote+yorum | **0** | **%0** | 0 | 0 |
+
+**Toplam: ~60 etkileşim → 1 ölçülebilir tık, 0 doğrulanmış kayıt.**
+
+**Trafik zaman serisi (Vercel Analytics, 7 günlük pencere):**
+
+| Tarih | Ziyaretçi | Sayfa | Bounce | Referrer |
+|---|---|---|---|---|
+| 07-17 | 23 | 63 | %61 | **boş** |
+| 07-19 | 27 | 67 | %67 | t.co → 1 |
+| 07-21 sabah | 31 | 50 | %74 | t.co → 1 |
+| 07-21 akşam | 36 | 55 | **%78** | t.co → 1 |
+
+Ziyaretçi artarken sayfa/ziyaret düştü ve bounce %61 → %78 kötüleşti (çıkarım: landing sayfası ikinci bir darboğaz). Ürün-içi sinyal mevcut: `/login` 3, `/app` 1, `/app/overview` 1.
+
+### 9.2 Karar: agresif outreach durduruldu, warm engagement'ın rolü değişti
+
+**07-17'de alınan "günlük pasif tur durduruldu, agresif DM/outreach'e geçildi" kararı 2026-08-02'de geri alınmıştır.** Gerekçeler tamamen ölçülen veridir:
+
+1. **Dönüşüm 0/6.** 6 doğrudan teklif ("early access + ilk 10'a ömür boyu %30 indirim") gönderildi: brka (sessiz), RomanAgabekov (sessiz), d11v (**açık red**), hSanat / ChiefSnack / jessethanley (1'er beğeni). Tek somut sonuç bir reddetmeydi.
+2. **Teklifin yakıtı yok oldu.** O teklif üç kaldıraca dayanıyordu — kıtlık, %30 indirim, launch sonrası fiyat çıpası. Ücretsiz modelde üçü de mevcut değil. Yeniden yazılması gereken şey mesaj değil, **teklifin kendisi**.
+3. **Kanal yapısal olarak kapalı.** X'te DM Premium gerektiriyor (hedefi takip etmek çözmüyor), Indie Hackers'ta native DM **hiç yok**. Yani "agresif DM stratejisi" kalan 3 platformun 2'sinde uygulanamıyordu; fiilen "public reply'a teklif iliştirmek"e indirgenmişti ve ölçülen sonucu 3 beğeniydi.
+4. **Tek yüksek niyetli lead warm engagement'tan geldi.** Radiant-Caramel6192'nin "Instrumenting the cancel flow now" yanıtı, teklif içermeyen, değer-önce bir yorumun sonucuydu.
+
+**Yeni rol dağılımı:**
+
+| Mod | Yeni işlevi | Bütçe |
+|---|---|---|
+| **Warm engagement** | Satış değil, **lead filtresi ve konuşma üretimi**. Ölçülen çıktısı tık değil yanıt. Tek KPI: alınan yanıt sayısı. | Günlük turun tamamı |
+| **Agresif outreach** | **Yalnızca tetiklenmiş takip.** Hedef churn/cancel-flow acısını açıkça beyan ettiğinde devreye girer (Şablon C). **Proaktif soğuk temas yok.** | Fırsat bazlı |
+| **Yayın / kalıcı varlık** | Yeni kalem — 20 gün boyunca **%0**'dı. Lansman + SEO içerik + dizinler + repo. | Haftalık blok |
+
+### 9.3 Karar: kanal seti genişletildi, Product Hunt günlük turdan çıkarıldı
+
+Mevcut 3 platform yetersizdir. Ölçülen gerekçeler:
+
+- En yüksek yanıt oranlı kanal (Reddit, %50) kalıcı kaybedildi ve **yerine hiçbir şey konmadı**; kalan üçü o dönemde de en düşük getirili üçtü.
+- **Product Hunt günlük turu: 13 etkileşim → 0 yanıt, 0 tık.** Nedeni kayıtlı: PH'de "replies to me" bildirim akışı yok. **Günlük turdan çıkarıldı**; PH yalnızca lansman için kullanılır.
+- Indie Hackers'ta tıklanabilir website alanı yok → yapısal olarak trafik üretemez, yalnızca konuşma üretir.
+- **20 günlük emeğin %100'ü kalıcı olmayan içerikti.** Sıfır bileşik varlık: indekslenen sayfa yok, repo yok, dizin kaydı yok, lansman yok. 60 yorum 1 tık üretti; 1 indekslenen sayfa süresiz üretir.
+
+**Yeni kanal seti (öncelik sırasıyla, hepsi $0):**
+
+| # | Kanal | Gerekçe | Tip |
+|---|---|---|---|
+| 1 | **Product Hunt LANSMANI** (yorum turu değil) | 07-12'den beri hazır, LS'e bağlıydı, kilit açıldı. Elde bulunan tek yüksek erişimli sıfır maliyetli olay. "Ücretsiz" burada en güçlü diferansiyatör. | Tek seferlik |
+| 2 | **SEO / kalıcı içerik (2-3 sayfa)** | Bileşik değer üreten sıfır varlık var. "Free Stripe cancel survey widget" tipi aramalar ücretsiz üründe doğrudan dönüşür. Bounce %78'i de aynı çalışma düzeltir. | Sürekli |
+| 3 | **Ücretsiz araç dizinleri** | Ücretsiz + tek satır kurulum, dizin formatına birebir uyuyor. Tek gönderim, kalıcı backlink. | Tek seferlik toplu |
+| 4 | **GitHub public repo** (widget kaynağı) | Geliştirici dağıtımı + kalıcı backlink + teknik yorumlarda kural-uyumlu link paylaşmanın tek yolu. | Tek seferlik + bakım |
+| 5 | **Reddit yeniden giriş (yeni hesap)** | Ölçülen en yüksek yanıt oranlı kanaldı (%50) ve tek yüksek niyetli lead oradan geldi. Maliyeti hesap yaşlandırma. | Opsiyonel, ~30 gün gecikmeli |
+
+### 9.4 Aksiyon planı
+
+**Faz 0 — Doküman temizliği** — ✅ **TAMAMLANDI (2026-08-02, bu commit).** Bölüm 1, 2, 3, 4 (Şablon B/C/D + Mesajlaşma Kuralları), 5, 6, 7, 8 ücretsiz modele ve yeni stratejiye göre güncellendi; bayat LS/indirim/early-access dili tamamen kaldırıldı.
+
+**Faz 1 — Lansman (bu hafta, en yüksek öncelik)**
+- [ ] PH "Upcoming" sayfasını aç (Bölüm 5.1).
+- [ ] 3-5 ekran görüntüsü/GIF hazırla (Bölüm 5.2).
+- [ ] Lansman günü metinlerini yaz: PH açıklaması + ilk yorum + IH launch postu + X thread (Bölüm 5.5).
+- [ ] **Lansman tarihini belirle** (Salı/Çarşamba önerilir) → Bölüm 5.6'ya yaz.
+- [ ] Lansman günü: Bölüm 6 "Gün 0" checklist'ini uygula.
+
+**Faz 2 — Kalıcı varlıklar (haftalık Cumartesi bloğu)**
+- [ ] **Hafta 1:** 2 SEO sayfası — "How to add an exit survey to your Stripe cancel flow" + "Free churn survey widget for Stripe (no code)". İkisi de kurulum snippet'i içersin.
+- [ ] **Hafta 2:** GitHub public repo — widget kaynağı + README (kurulum, canlı demo linki).
+- [ ] **Hafta 3:** Ücretsiz araç dizinlerine toplu gönderim.
+- [ ] **Hafta 4:** Landing bounce çalışması (%78 → hedef %60); "free, no card" mesajını fold üstüne taşı.
+
+**Faz 3 — Günlük rutin:** Bölüm 10.
+**Faz 4 — Ölçüm:** Bölüm 10 sonundaki metrik tablosu.
+
+---
+
+## 10. Çalışma Ritmi (2026-08-02'den itibaren)
+
+### Günlük tur — Pzt-Cum, **1×/gün, 30-45 dk**
+
+> **Karar gerekçesi (ölçülen):** 2×/gün uygulanan günlerde (07-12, 13, 14, 16, 21) günde ~8 etkileşim üretildi ama trafik/yanıt oranında 1×/gün günlere göre **fark oluşmadı**. Buna karşılık en yoğun dönemin hemen ardından 10 günlük tam terk yaşandı. PH günlük turdan çıkınca günün saatine bağlı tek platform da ortadan kalktı. **Sürdürülen 1×/gün > terk edilen 2×/gün.** İkinci turun serbest kalan zamanı (~4 saat/hafta) haftalık asset bloğuna aktarıldı.
+
+**Önerilen slot:** akşam 18:00-21:00 (yerel) — trafiğin %57'si ABD kaynaklı, bu aralık ABD sabah/öğlen saatlerine denk gelir.
+
+| Adım | Süre | İçerik |
+|---|---|---|
+| 1. **Takip (öncelikli)** | 10 dk | X mentions + IH bildirimleri. **Açık konuşma varsa yeni hedef aramadan önce yanıtla** — ölçülen en yüksek getiri buradan geldi. |
+| 2. **X** | 10 dk | 1 taze hedef, beğeni + 280 karakter altı özgün teknik yorum. Hedefin hesap geçmişini kontrol et (marka güvenliği — 07-21'de "previously banned" bir hesap bu yüzden atlandı). |
+| 3. **Indie Hackers** | 15 dk | 1 taze hedef (ana sayfa/"Newest" — site içi arama çalışmıyor), upvote + teknik yorum. |
+| 4. **Log** | 5 dk | Bölüm 12'ye kayıt. |
+
+**Product Hunt günlük turda yoktur.** Yalnızca lansman hazırlığı ve lansman gününde kullanılır.
+
+### Haftalık ritim
+
+| Gün | Blok | Süre |
+|---|---|---|
+| Pzt-Cum | Günlük tur | 30-45 dk |
+| **Cumartesi** | **Asset bloğu** (Faz 1/Faz 2 maddeleri) — etkileşim turu yapılmaz | ~2 saat |
+| Pazar | Haftalık ölçüm | 15 dk |
+
+### Ölçüm ve kanal-kapatma kuralı
+
+| Metrik | Baz (2026-08-01) | 30 gün hedefi |
+|---|---|---|
+| Vercel Referrers — sosyal tık | 1 (t.co) | ≥ 15 |
+| Alınan yanıt / hafta | ~1 | ≥ 5 |
+| Doğrulanmış kayıt (`/app` erişimi) | 0 | ≥ 10 |
+| Kalıcı varlık sayısı | **0** | ≥ 6 (2 sayfa + repo + 3 dizin) |
+
+> **Not:** Vercel'in **UTM Parameters sekmesi ücretsiz planda kilitli** — ölçüm için **Referrers** sekmesi kullanılır.
+
+**Kanal-kapatma kuralı:** Bir kanal 2 hafta üst üste 0 yanıt + 0 tık üretirse rutinden çıkarılır. (Product Hunt günlük turuna 2026-08-02'de uygulanan kararın aynısı.)
+
+---
+
+## 11. Standart Oturum Prompt'ları
+
+> Manuel yükü azaltmak için hazırlanmıştır — her oturumda aşağıdaki metin olduğu gibi yapıştırılır, ayrıca bağlam anlatmaya gerek yoktur.
+
+### 11.1 Günlük tur prompt'u (Pzt-Cum)
+
+```
+CancelKit günlük GTM turu. Önce docs/GTM_STRATEGY.md Bölüm 12'deki son 2 kaydı
+oku (aynı hedeflere tekrar gitme). Ürün durumu: canlı, kalıcı ÜCRETSİZ, ödeme
+sağlayıcısı yok, kredi kartı gerekmiyor. Reddit rotasyonda değil (hesap banlı).
+Product Hunt günlük turda değil (yalnızca lansman için).
+
+Sırayla yap, her adımda bana taslağı göster ve onay bekle:
+
+1. TAKİP (öncelikli): X mentions + Indie Hackers bildirimleri kontrol et.
+   Yanıt bekleyen açık konuşma varsa yeni hedef aramadan ÖNCE onları yanıtla.
+   Churn/cancel-flow acısını açıkça beyan eden kişilerde tetiklenmiş takip yap
+   (Şablon C — ücretsiz + tek satır script teklifi).
+
+2. X: bugün/dün atılmış 1 taze hedef bul (churn, cancel flow, retention,
+   Stripe subscription, #buildinpublic). Hedefin hesap geçmişini kontrol et
+   (marka güvenliği). Beğeni + 280 karakter altı özgün teknik yorum.
+
+3. INDIE HACKERS: 1 taze hedef bul (ana sayfa/Newest — site içi arama çalışmıyor).
+   Upvote + teknik yorum. Satış dili yok, ürün yalnızca bağlam olarak anılır.
+
+4. ÖLÇÜM: Vercel Analytics → Referrers sekmesi (UTM sekmesi ücretsiz planda kilitli).
+   Ziyaretçi, bounce, /login ve /app ziyaretlerini not et.
+
+5. LOG: Yapılanları docs/GTM_STRATEGY.md Bölüm 12'ye bugünün tarihiyle işle —
+   hedef isimleri, gönderilen içeriğin özeti, alınan tepkiler, teknik notlar.
+
+Mesajlaşma kuralları (Bölüm 4):
+- Tüm dış iletişim İngilizce.
+- ASLA indirim/early-access/beta/fiyat vaadi verme — ürün kalıcı ücretsiz.
+- "Henüz yayında değil / billing setup" ifadelerini ASLA kullanma (bayat).
+- Link ilk temasta paylaşılmaz; ürün adı yalnızca doğal bağlamda geçer.
+- Miktar değil kalite: 1 yüksek kaliteli yorum > 5 düşük kaliteli.
+- Her paylaşım için ayrı onay al, otomatik gönderme yok.
+
+Ek: Bölüm 9.4'te açık olan asset görevi varsa (PH lansman hazırlığı, SEO sayfası,
+GitHub repo, dizin gönderimi) tur sonunda bana durumunu hatırlat.
+```
+
+### 11.2 Haftalık asset bloğu prompt'u (Cumartesi)
+
+```
+CancelKit haftalık asset bloğu. docs/GTM_STRATEGY.md Bölüm 9.4'teki Faz 1/Faz 2
+listesinden bir sonraki açık maddeyi al ve bitir. Öncelik sırası:
+(1) Product Hunt lansman hazırlığı, (2) SEO sayfaları, (3) GitHub repo,
+(4) dizin gönderimleri, (5) landing bounce çalışması.
+Günlük etkileşim turu YAPMA — bu blok yalnızca kalıcı varlık üretimi içindir.
+Bitirdiğin maddeyi Bölüm 9.4'te işaretle ve Bölüm 12'ye kaydet.
+```
+
+### 11.3 Haftalık ölçüm prompt'u (Pazar)
+
+```
+CancelKit haftalık ölçüm. Vercel Analytics'ten son 7 günü al (ziyaretçi, sayfa
+görüntüleme, bounce, Referrers sekmesi, /login ve /app ziyaretleri). Bunları
+docs/GTM_STRATEGY.md Bölüm 10'daki metrik tablosunun bazıyla karşılaştır.
+Bir kanal 2 hafta üst üste 0 yanıt + 0 tık ürettiyse kanal-kapatma kuralını
+hatırlat. Sonucu Bölüm 12'ye haftalık özet olarak işle.
+```
+
+---
+
+## 12. Günlük Aktivite Günlüğü
+
+> Günlük turun (2026-08-02'den itibaren: **X + Indie Hackers**, 1×/gün) ne yapıldığı burada kayıt altına alınır — hem tekrar/unutma riskini önlemek hem de bir sonraki oturumun kaldığı yerden devam edebilmesi için. Yeni gün başında **en son 2 kaydı** oku, aynı postlara/kişilere tekrar gitme.
+>
+> **Tarihsel not:** 2026-08-01'e kadar tur 4 platformluydu (X, Indie Hackers, Product Hunt, Reddit). Reddit 08-01'de (hesap banı), Product Hunt 08-02'de (0/13 yanıt — Bölüm 9.3) rotasyondan çıkarıldı. Aşağıdaki eski kayıtlarda geçen Lemon Squeezy / indirim / early-access ifadeleri **tarihsel kayıttır**, güncel strateji değildir.
 
 ### 2026-07-12
 - **Lemon Squeezy durumu:** API + panel üzerinden kontrol edildi — mağaza hâlâ **Test modunda** (KYC/kimlik incelemesi onaylanmadı). Panelde "Production" adlı API key sadece bir etiketti, gerçek modu göstermiyordu.
@@ -403,3 +626,29 @@ Büyüme/pazarlama işi **"canlı ortak oturum"** modeliyle yürütülür: kulla
 - X arama sorgularında basit anahtar kelimeler (`"cancel flow"`, `#buildinpublic cancel`) gürültülü/alakasız sonuçlar (revenue recap'leri, reklamlar) döndürdü; en iyi sonuç `#buildinpublic cancel` aramasında çıktı. Bir arama sonucunda bir tweet içinde HTML/CSS benzeri gömülü metin (`sidebar-title`, `data-mistake` vb.) görüldü — muhtemelen ilgisiz/bozuk bir tweet içeriği, herhangi bir talimat olarak değerlendirilmedi ve o hedefe hiç gidilmedi.
 
 **Genel not:** Bugün toplam 3 etkileşim + 1 upvote gönderildi (X, Indie Hackers, Product Hunt — Reddit kalıcı olarak dışarıda). Bir sonraki oturum bu 3 hedeften (Rajat, fabienlk/FlagUp, SyncStaq) gelecek yanıtları kontrol etmeli. Reddit'e dönülmesi istenirse yeni bir hesap oluşturulması gerekecek.
+
+### 2026-08-02 — STRATEJİ REVİZYONU (etkileşim turu yapılmadı)
+
+> Bu oturumda platform turu yapılmadı. Kullanıcı, 07-17'deki "agresif outreach'e geçiş" kararının ve ücretsiz modele geçişin ışığında kapsamlı, objektif bir strateji analizi istedi. 20 günlük kayıtlı veri (Bölüm 12'deki tüm günlük kayıtlar + Vercel Analytics ölçümleri) analiz edildi ve doküman baştan sona revize edildi.
+
+**1. Analiz bulguları (Bölüm 9.1'e işlendi):** ~60 etkileşim → 1 ölçülebilir tık, 0 doğrulanmış kayıt. Platform bazlı yanıt oranları: Reddit %50 (banlı), IH %18, X ~%0, **PH %0 (13 etkileşim, 0 yanıt)**. Bounce %61 → %78 kötüleşti.
+
+**2. Alınan kararlar:**
+- **07-17'nin "agresif outreach" kararı geri alındı** — 0/6 dönüştü, tek sonucu bir reddetmeydi (d11v); ayrıca teklifin üç kaldıracı da (kıtlık/indirim/fiyat çıpası) ücretsiz modelle yok oldu ve X/IH'de DM yapısal olarak imkânsız. Outreach artık yalnızca **tetiklenmiş takip** olarak yapılacak (Şablon C).
+- **Product Hunt günlük turdan çıkarıldı** (0/13 yanıt) — yalnızca lansman için kullanılacak.
+- **Günlük tur 2×/gün → 1×/gün** indirildi (çift tur ek getiri üretmemişti, buna karşılık 10 günlük terkle sonuçlanmıştı).
+- **Kalıcı varlık üretimi eklendi** — 20 günün %100'ü ephemeral içerikti, bileşik değer üreten sıfır varlık vardı. Haftalık Cumartesi bloğu tanımlandı.
+- **Lansman en yüksek öncelikli açık iş yapıldı** — kritik bulgu: lansmanın tamamı "LS Live olduğunda" tetikleyicisine bağlıydı; LS 08-01'de kaldırılınca kilit açıldı ama fark edilmemiş, yeni tarih planlanmamıştı.
+
+**3. Doküman değişiklikleri (Faz 0 — tamamlandı):**
+- **Bölüm 1:** "tek açık madde LS KYC" → "tek açık madde lansman"; "Founding Member / Erken Erişim" çerçevesi geçersiz ilan edildi, yerine "Ücretsiz, kredi kartı yok, tek satır script" kondu.
+- **Bölüm 2:** Tarih 07-12 → 08-02; her platforma "rutindeki rolü" sütunu ve ölçülen 20 günlük performansı eklendi.
+- **Bölüm 3:** Subreddit satırlarının pasif olduğu (referans amaçlı korunduğu) not düşüldü.
+- **Bölüm 4:** Şablon A'nın uzun versiyonundan "Shipping this week" çıkarıldı; **Şablon B** ücretsiz modele göre yeniden yazıldı (LS/early-access dili silindi); **Şablon C** "sıcak DM" yerine "tetiklenmiş takip" oldu; **Şablon D** "soğuk DM" yerine "X public reply" oldu (DM kapalı olduğu için); Mesajlaşma Kuralları'ndan founding-member indirim kuralı silindi, yerine ücretsiz-model yasakları kondu.
+- **Bölüm 5:** "LS onayı geldiğinde" gating kaldırıldı, lansman kilidinin açıldığı vurgulandı, lansman tarihi alanı eklendi.
+- **Bölüm 6:** Gün-0 tetikleyicisi takvime bağlandı; indirim kodu maddesi kaldırıldı; r/indiehackers maddesi iptal edildi (ban); bildirim yapılacak kişi listesi eklendi (d11v hariç tutuldu).
+- **Bölüm 7:** "Pazarlama churn'ü" satırına öngörünün gerçekleştiği ve 1×/gün düzeltmesi işlendi.
+- **Bölüm 8:** "Sıradaki adım" LS bağımlılığından kurtarıldı → PH lansmanı.
+- **Yeni Bölüm 9** (Strateji Revizyonu — veri, kararlar, aksiyon planı), **Bölüm 10** (Çalışma Ritmi + ölçüm/kanal-kapatma kuralı), **Bölüm 11** (Standart oturum prompt'ları) eklendi. Günlük Aktivite Günlüğü 9 → **12** oldu.
+
+**Sıradaki oturum:** Bölüm 11.1'deki günlük tur prompt'u kullanılacak. Paralelde Bölüm 9.4 Faz 1 (PH "Upcoming" sayfası) açık iş olarak duruyor. Ayrıca 08-01'in 3 hedefinden (Rajat, fabienlk/FlagUp, SyncStaq) gelecek yanıtlar hâlâ kontrol edilmeli.
