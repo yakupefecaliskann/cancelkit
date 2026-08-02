@@ -278,9 +278,15 @@ Mevcut 3 platform yetersizdir. Ölçülen gerekçeler:
 **Faz 1 — Lansman (bu hafta, en yüksek öncelik)**
 - [x] **Lansman tarihini belirle** → **2026-08-05 (Çarşamba)**, 2026-08-02'de belirlendi (Bölüm 5.6).
 - [x] PH "Upcoming" taslağı açıldı ve dolduruldu (2026-08-02) — `producthunt.com/posts/new` üzerinden: isim "CancelKit", tagline "Turn cancellations into saved revenue — free, no card" (53/60), açıklama (Bölüm 5.5 çerçevesiyle uyumlu), launch tags (SaaS, Fintech, Customer Success), ilk yorum (kurucu hikayesi, Şablon B çerçevesi) yazıldı. Maker olarak "I worked on this product" işaretlendi. X account alanı **boş bırakıldı** (X rotasyonda değil). Taslak "In progress" durumunda, **henüz yayınlanmadı/gönderilmedi**. PH'nin kendi "Launch checklist"ine göre **Required: %67 tamamlandı** — eksik iki madde: **Thumbnail** ve **Gallery görselleri**.
-- [ ] **3-5 ekran görüntüsü/GIF hazırla** (Bölüm 5.2) — PH taslağının Thumbnail + Gallery alanları için gerekli, tek kalan Required madde. Gerçek üründen (cancelkit.site) alınmalı: widget'ın cancel butonunda tetiklenmesi → exit survey → save offer → dashboard.
-- [ ] Görseller yüklenip PH taslağı %100 Required'a tamamlandığında, Strongly Recommended maddeleri (Shoutouts, Additional Makers, Video/Loom) değerlendirilir.
-- [ ] Lansman günü (2026-08-05): Bölüm 6 "Gün 0" checklist'ini uygula.
+- [x] **3-5 ekran görüntüsü hazırla** (Bölüm 5.2) — 2026-08-02'de tamamlandı. `cancelkit.site` DNS arızası nedeniyle (aşağıya bakın) **`cancelkit-silk.vercel.app`** üzerinden alındı: hero, "Live in under 10 minutes" 3-adım bölümü, "See the real product, not a mockup" bölümü, "Free to use / $0" fiyatlandırma kartı. `/demo` sayfasındaki gerçek widget (exit survey/save offer) publishable key gerektirdiği ve hesap oluşturmayı gerektireceği için (izin dışı) kullanılmadı — yalnızca pazarlama sayfası görselleri kullanıldı.
+- [x] Görseller PH taslağına yüklendi — **Required checklist %100 tamamlandı** (Product name, tagline, description, Thumbnail, Gallery, Launch tags hepsi yeşil).
+- [ ] **⚠️ Lansmandan önce mutlaka çözülmeli: `cancelkit.site` DNS arızası** (aşağıdaki "Kritik Altyapı Bulgusu"na bakın). PH taslağının "Link to the launch" alanı hâlâ `cancelkit.site`'a işaret ediyor — domain çalışır hale gelmeden gerçek lansman yapılmamalı.
+- [ ] "Schedule launch for later" / "Create draft" — **kullanıcı onayı bekleniyor**, henüz tıklanmadı (kamuya açık/geri dönüşü zor bir taahhüt).
+- [ ] Görseller yüklendiğine göre, Strongly Recommended maddeleri (Shoutouts, Additional Makers, Video/Loom) değerlendirilebilir.
+- [ ] Lansman günü (2026-08-05, DNS düzeltildikten sonra): Bölüm 6 "Gün 0" checklist'ini uygula.
+
+**⚠️ Kritik Altyapı Bulgusu (2026-08-02) — `cancelkit.site` DNS arızası:**
+Vercel Domains panelinde hem `cancelkit.site` hem `www.cancelkit.site` **"Invalid Configuration"** gösteriyor. Bağımsız doğrulama: Google DNS (8.8.8.8), Cloudflare (1.1.1.1) ve yerel ISP resolver'ının üçü de A/CNAME/**NS** sorgularında **NXDOMAIN** döndürdü; Chrome'un kendisi de domain'i çözemedi. NS sorgusunun bile başarısız olması **"yayılım bekleniyor" değil, nameserver delegasyonunun tamamen düştüğü/domain kaydının sorunlu olduğu** anlamına gelir — bu Vercel'in düzeltebileceği bir şey değil, **registrar panelinden** (nameserver ayarları, domain durumu/süresi) kontrol edilmesi gerekiyor. Bağlamsal not: domain 2026-07-12'de 200 dönerek çalışıyordu (bu dosyanın 07-12 kaydına bakın) — bu yeni bir regresyon, ilk kurulum gecikmesi değil. **`cancelkit-silk.vercel.app` (Valid Configuration) çalışır durumda** ve geçici fallback olarak kullanılabilir, ama lansman öncesi ana domain mutlaka düzeltilmeli.
 
 **Faz 2 — Kalıcı varlıklar (haftalık Cumartesi bloğu)**
 - [ ] **Hafta 1:** 2 SEO sayfası — "How to add an exit survey to your Stripe cancel flow" + "Free churn survey widget for Stripe (no code)". İkisi de kurulum snippet'i içersin.
@@ -683,3 +689,27 @@ hatırlat. Sonucu Bölüm 12'ye haftalık özet olarak işle.
 - **PH'nin kendi "Launch checklist"i:** Required bölümü **%67 tamamlandı** — Product name, tagline, description, launch tags, first comment tamam; **Thumbnail** ve **Gallery görselleri** eksik (tek kalan Required madde, gerçek ürün ekran görüntüsü/GIF gerektiriyor — Bölüm 9.4 Faz 1'e ayrı madde olarak işlendi).
 
 **Sıradaki oturum:** Bölüm 11.1 (IH tek platformlu) günlük tur prompt'u kullanılacak. En yüksek öncelikli açık iş: cancelkit.site'tan 3-5 gerçek ekran görüntüsü/GIF alıp PH taslağının Thumbnail + Gallery alanlarını doldurmak (Bölüm 9.4 Faz 1) — bu tamamlanınca PH taslağı Required %100'e ulaşır ve 2026-08-05 lansmanı için hazır olur.
+
+### 2026-08-02 — Devam: Vercel DNS analizi + PH taslağı Required %100'e tamamlandı
+
+> Kullanıcı önce Vercel panelinden `cancelkit.site` domain durumunun bağımsız teknik analizini istedi, ardından ekran görüntülerini `cancelkit-silk.vercel.app` üzerinden alıp PH taslağını tamamlamayı talep etti (asıl domain "DNS yayılımı nedeniyle" erişilemez olduğu varsayımıyla).
+
+**1. Vercel domain analizi — bulgu, varsayımdan daha ciddi:**
+- Vercel Domains panelinde `cancelkit.site` ve `www.cancelkit.site` **"Invalid Configuration"** (kırmızı) gösteriyor; `cancelkit-silk.vercel.app` **"Valid Configuration"** (mavi).
+- Bağımsız çapraz doğrulama: Google DNS (8.8.8.8), Cloudflare (1.1.1.1), yerel ISP resolver — üçü de `cancelkit.site` için A, CNAME **ve NS** sorgularında **NXDOMAIN** döndürdü. Chrome'da doğrudan gezinme de DNS hatasıyla sonuçlandı.
+- **Değerlendirme:** Bu "DNS yayılımı bekleniyor" değil — NS (nameserver) sorgusunun bile başarısız olması domain'in şu anda **hiçbir global delegasyonu olmadığı** anlamına gelir. Normal yayılım gecikmesinde resolver'lar arası tutarsızlık görülür, evrensel NXDOMAIN görülmez. **Sonuç: registrar seviyesinde bir sorun** (nameserver ayarı düşmüş/domain süresi sorunlu olabilir) — Vercel tarafında düzeltilemez, registrar panelinden kontrol edilmeli.
+- **Bağlam:** Bu dosyanın 07-12 kaydına göre domain o tarihte 200 dönüyordu — yeni bir regresyon, ilk kurulum gecikmesi değil.
+- Bu bulgu Bölüm 9.4'e "Kritik Altyapı Bulgusu" olarak işlendi; lansmandan önce mutlaka çözülmesi gereken bir blocker.
+
+**2. `cancelkit-silk.vercel.app` üzerinden ekran görüntüleri:**
+- Site sorunsuz yüklendi. `/demo` sayfası gerçek widget'ı (exit survey/save offer) gösteriyor ama bir Stripe publishable key yüklenmesini gerektiriyor — bunun için hesap oluşturmak gerekeceğinden (izin politikası dışı: "creating accounts" yasak listesinde) bu yola gidilmedi.
+- Bunun yerine pazarlama sayfasından 4 temiz görsel alındı: (1) hero ("Turn cancellations into saved revenue"), (2) "Live in under 10 minutes" 3-adım bölümü, (3) "See the real product, not a mockup" bölümü, (4) "Free to use / $0" fiyatlandırma kartı.
+- **Teknik not:** Ekran görüntüleri varsayılan olarak Chrome'un kendi geçici klasörüne kaydediliyor, PH'nin dosya inputuna doğrudan yüklenemedi ("only files this session is allowed to read"). Çözüm: dosyalar `Bash cp` ile oturumun scratchpad klasörüne kopyalanıp oradan `file_upload` ile yüklendi. **Ders:** Ekran görüntülerini bir yükleme akışında kullanacaksan `save_to_disk:true` ile al, sonra scratchpad'e kopyala.
+- **Teknik not — PH dosya input'ları:** "Select an image" / "Browse for files" gibi görünen butonlar tıklanabilir değil (native dosya seçici açar, görünmez) — `find`/`read_page(filter:"all")` ile aynı bölgedeki gizli `type="file"` elementini (ref) bulup `file_upload` ile doğrudan hedeflemek gerekti.
+
+**3. PH taslağı tamamlandı:**
+- Thumbnail (hero görseli) ve 3 galeri görseli (steps, real-product, pricing) yüklendi.
+- **Required checklist: %100 Complete** — Product name, tagline, description, Thumbnail, Gallery, Launch tags hepsi yeşil.
+- **"Schedule launch for later" / "Create draft" butonlarına kullanıcı onayı olmadan tıklanmadı** — bunlar kamuya açık bir lansman taahhüdüne yakın, ayrıca `cancelkit.site` DNS sorunu çözülmeden gerçek lansmana geçmek doğru olmaz.
+
+**Sıradaki adım:** Kullanıcıya (a) DNS bulgusu — registrar kontrolü gerekiyor, (b) PH taslağının %100 hazır olduğu ama "Create draft"/"Schedule launch" için onay beklediği raporlandı.
