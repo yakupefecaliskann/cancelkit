@@ -1,6 +1,6 @@
 # CancelKit — Go-To-Market Stratejisi
 
-> Son güncelleme: 2026-08-02 (**Strateji revizyonu** — 20 günlük veri analizi sonrası: agresif outreach durduruldu, Product Hunt günlük turdan çıkarıldı, günlük tur 1×/gün'e indirildi, kalıcı varlık üretimi eklendi) · Durum: Canlı yayında, kalıcı ücretsiz ürün — ödeme sağlayıcısı yok, **lansman henüz yapılmadı**
+> Son güncelleme: 2026-08-02 (**Strateji revizyonu** — 20 günlük veri analizi sonrası: agresif outreach durduruldu, Product Hunt günlük turdan çıkarıldı, günlük tur 1×/gün'e indirildi, kalıcı varlık üretimi eklendi; **aynı gün içinde X de X'in kendi spam-etiketi nedeniyle kalıcı olarak rotasyondan çıkarıldı** — bkz. Bölüm 2) · Durum: Canlı yayında, kalıcı ücretsiz ürün — ödeme sağlayıcısı yok, **lansman henüz yapılmadı**
 > Bu dosya, CMO Eylem Planı (mesaj şablonları, platform kuralları) ile VP of Growth 30 Günlük Momentum Planı'nın birleştirilmiş, kalıcı halidir.
 > **Güncel strateji için önce Bölüm 9-11'i oku** (veri analizi, yeni ritim, standart oturum prompt'ları). Bölüm 1-8 bu revizyona göre güncellenmiştir.
 
@@ -28,7 +28,7 @@ CancelKit'in teknik/altyapı tarafı bitti (bkz. TODO.md Faz 6.8 ve 6.9): widget
 
 | Platform | Hesap | Rutindeki rolü | Durum |
 |---|---|---|---|
-| **X (Twitter)** | [@CancelKitHQ](https://x.com/CancelKitHQ) | **Günlük tur — 1 hedef/gün** | Profil tam (banner, CK monogram avatar, bio). Bio linki UTM'li (`?utm_source=twitter&utm_medium=social&utm_campaign=bio`). 20 günlük ölçüm: ~19 etkileşim → 0 yanıt, ~4 beğeni, **1 follower**, ölçülen tek sosyal tık (t.co → 1) buradan geldi. **DM Premium olmadan imkânsız** ("Only verified users can send DM requests") — hedefi takip etmek çözmüyor. "Graduated access" kısıtı hâlâ aktif. |
+| **X (Twitter)** | [@CancelKitHQ](https://x.com/CancelKitHQ) — **SPAM ETİKETİ ALDI (2026-08-02'de fark edildi), KALICI OLARAK ROTASYONDAN ÇIKARILDI** | ~~Günlük tur — 1 hedef/gün~~ | X, hesaba "may contain spam or be engaging in other types of inauthentic behaviors" gerekçesiyle otomatik bir kısıtlama etiketi eklemiş: "excluded from trends, replies, recommended notifications, and search results." Doğrulama: 08-01'de Rajat'a atılan yanıt hedef tweet'in reply thread'inde hiç görünmüyor; `from:CancelKitHQ` araması sıfır sonuç dönüyor. Muhtemel neden: 20 gün boyunca düşük takipçili/doğrulanmamış hesaptan yabancıların tweet'lerine yoğun "teknik yorum + ürün anması" kalıbıyla yanıt bırakmak, X'in otomatik spam sınıflandırıcısını tetiklemiş olabilir. **Kullanıcı kararı (2026-08-02): X'e dokunulmuyor, strateji ve günlük turdan tamamen çıkarıldı** — Reddit'teki gibi ileride isteğe bağlı yeniden değerlendirilebilir ama şimdilik aktif değil. 20 günlük geçmiş performans (referans): ~19 etkileşim → 0 yanıt, ~4 beğeni, 1 follower, tek ölçülen sosyal tık (t.co → 1) buradan gelmişti. |
 | **Indie Hackers** | [indiehackers.com/efecaliskan](https://www.indiehackers.com/efecaliskan) | **Günlük tur — 1 hedef/gün (birincil konuşma kanalı)** | Gerçek isim/fotoğrafla profil tam. 20 günlük ölçüm: ~17 etkileşim → **3 yanıt (~%18, kalan kanalların en yükseği)**. **Native DM özelliği yok.** **Tıklanabilir website link alanı yok** — UTM ölçümü yapısal olarak imkânsız (07-17'de denendi, geri alındı). Site içi arama çalışmıyor; hedef taraması ana sayfa + "Newest" ile yapılır. |
 | **Product Hunt** | Kişisel profil (Yakup Efe Çalışkan) | **Günlük turdan ÇIKARILDI (2026-08-02)** — yalnızca lansman | Profil tam, "Additional links → Website" UTM'li. 20 günlük ölçüm: **~13 upvote+yorum → 0 yanıt, 0 tık**. Neden kayıtlı: PH'de "replies to me" için ayrı bildirim akışı yok, günlük launch yorumları okunmuyor. **PH'nin değeri günlük yorumda değil, lansmandadır** — Bölüm 5. Not: rakip/komşu ürün **ChurnDog** (involuntary churn/failed-payment recovery, 1 yıl önce launch) referans olarak biliniyor; eski bir launch'a CancelKit pazarlamak spam görüneceği için bilinçli atlanıyor. |
 | **Reddit** | Hesap **BANLANDI** (2026-08-01'de fark edildi) — KALICI OLARAK ROTASYONDAN ÇIKARILDI | ~~Yeni hesap (görünen ad: "Efe - Building CancelKit")~~. Reddit hesabı (banlandığı için) şimdilik rutinlerden çıkarıldı. İleride isteğe bağlı olarak yeni bir hesapla tekrar eklenebilir. 2026-08-01'den itibaren günlük 4-platform turu artık yalnızca X / Indie Hackers / Product Hunt'ı kapsıyor (3 platform). Eski hesap geçmişi (4 subreddit üyeliği, r/EntrepreneurRideAlong/r/SaaS yorumları) referans için aşağıdaki günlükte duruyor ama artık aktif değil. |
@@ -37,7 +37,7 @@ CancelKit'in teknik/altyapı tarafı bitti (bkz. TODO.md Faz 6.8 ve 6.9): widget
 
 ## 3. Platform Kuralları (Kritik — Her Paylaşımdan Önce Kontrol Et)
 
-> **Not (2026-08-02):** Aşağıdaki tablodaki tüm **subreddit satırları şu an pasiftir** — Reddit hesabı banlı, platform rotasyonda değil. Bu satırlar, ileride yeni bir hesapla Reddit'e dönülürse (Bölüm 9.3, Kanal #5) doğrudan kullanılabilsin diye referans olarak korunuyor. Aktif kurallar: **X**, **Indie Hackers**, **Product Hunt** satırları.
+> **Not (2026-08-02):** Aşağıdaki tablodaki tüm **subreddit satırları şu an pasiftir** — Reddit hesabı banlı, platform rotasyonda değil. Bu satırlar, ileride yeni bir hesapla Reddit'e dönülürse (Bölüm 9.3, Kanal #5) doğrudan kullanılabilsin diye referans olarak korunuyor. **X de aynı gün içinde spam-etiketi nedeniyle rotasyondan çıkarıldı** (Bölüm 2). Aktif kurallar: yalnızca **Indie Hackers** ve **Product Hunt** (yalnızca lansman için) satırları.
 
 | Platform/Subreddit | Kural | Not |
 |---|---|---|
@@ -117,9 +117,9 @@ If you want to instrument your cancel flow without writing it yourself,
 happy to send the snippet.
 ```
 
-### Şablon D — Public reply'da kısa ürün anması (X, 280 karakter altı)
+### Şablon D — Public reply'da kısa ürün anması (X, 280 karakter altı) — ⚠️ PASİF (2026-08-02: X rotasyondan çıkarıldı)
 
-> X'te DM kapalı olduğu için (Premium gerekiyor) ürün anması yalnızca public reply içinde, yorumun doğal bir parçası olarak yapılır. Yorumun kendisi teknik değer taşımalı; ürün anması tek cümleyi geçmemeli.
+> X'te DM kapalı olduğu için (Premium gerekiyor) ürün anması yalnızca public reply içinde, yorumun doğal bir parçası olarak yapılır. Yorumun kendisi teknik değer taşımalı; ürün anması tek cümleyi geçmemeli. **X hesabı spam etiketiyle kısıtlandığı için bu şablon şu an kullanılmıyor** (Bölüm 2); referans olarak korunuyor.
 
 ```
 [Hedefin noktasına dair 1-2 cümlelik özgün teknik gözlem.]
@@ -150,8 +150,8 @@ cancel button. It's free now, no card.
 2. **Launch görselleri:** Logo (CK monogramı mevcut, gerçek logo ile değiştirilebilir), 3-5 ürün ekran görüntüsü/GIF (widget'ın cancel butonunda tetiklenmesi → exit survey → save offer → dashboard), tagline: *"Turn cancellations into saved revenue — free, one line of code."*
 3. **"Hunter" bulma:** PH'de tanınmış indie hacker/hunter hesaplarını takip et, postlarına anlamlı yorumlar bırak (SoundPipe maker'ı Chris Battarbee gibi bağlantılar bu amaçla değerli).
 4. **Indie Hackers "Product" sayfası:** Lansman günü canlıya alınacak şekilde şimdiden hazırlanmalı.
-5. **Launch günü metni taslağı:** PH açıklaması + ilk yorum (kurucu hikayesi) + IH launch postu + X thread. **Kurucu hikayesinde LS/KYC bekleme anlatısı kullanılmaz**; kullanılacak anlatı: "billing katmanını yazdım, sonra tamamen sildim ve ürünü ücretsiz yaptım" (Şablon B ile aynı çerçeve).
-6. **Lansman tarihi:** Salı veya Çarşamba önerilir (PH'de rekabet en düşük). Tarih belirlendiğinde bu satıra yazılır → **Belirlenen tarih: _(henüz seçilmedi)_**.
+5. **Launch günü metni taslağı:** PH açıklaması + ilk yorum (kurucu hikayesi) + IH launch postu. ~~+ X thread~~ — **X 2026-08-02'de rotasyondan çıkarıldı (Bölüm 2), launch günü X adımı iptal.** **Kurucu hikayesinde LS/KYC bekleme anlatısı kullanılmaz**; kullanılacak anlatı: "billing katmanını yazdım, sonra tamamen sildim ve ürünü ücretsiz yaptım" (Şablon B ile aynı çerçeve).
+6. **Lansman tarihi:** Salı veya Çarşamba önerilir (PH'de rekabet en düşük). → **Belirlenen tarih: 2026-08-05 (Çarşamba)** — 2026-08-02'de kullanıcı onayıyla belirlendi.
 7. **"Ücretsiz" PH'de en güçlü diferansiyatördür** — tagline, ilk yorum ve galeri görsellerinin hepsinde "free, no card" açıkça görünmeli.
 
 ---
@@ -163,15 +163,15 @@ cancel button. It's free now, no card.
 > Tetikleyici 2026-08-02'de değiştirildi: eski tetikleyici "LS Live moda geçtiği an"dı; LS kaldırıldığı için artık **takvime bağlı, kendi seçtiğimiz bir tarihtir**.
 
 1. **Product Hunt lansmanı** — "Upcoming" sayfası varsa canlıya al, yoksa doğrudan launch et. İlk yorumu kendin (kurucu hikayesi) yaz.
-2. **X'te launch thread'i** — problem → çözüm → "free, no card" → canlı link.
+2. ~~X'te launch thread'i~~ — **iptal (2026-08-02)**, X hesabı spam etiketiyle kısıtlandığı için rotasyondan çıkarıldı (Bölüm 2).
 3. **Indie Hackers "founder diary" launch postu** (Şablon B).
 4. **Indie Hackers "Product" sayfasını** canlıya al.
 5. **Geçmişte konuşulan kişilere kişisel bildirim** — indirim kodu **yok**; mesaj "artık ücretsiz ve canlı, konuştuğumuz sorunu çözüyor" çerçevesinde. Öncelikli liste: Radiant-Caramel6192 (cancel flow'u enstrümante ediyordu), quratulaincreatives (yaklaşımı açıkça övdü), LeoYang (Revova, tamamlayıcı ürün), brka. **d11v'ye yazılmaz** (07-18'de açıkça reddetti).
 6. ~~r/indiehackers'a launch postu~~ — **iptal**, Reddit hesabı banlı.
 
 ### Hafta 1 — Görünürlük İnşası
-- Günlük tur (Bölüm 10 ritmi): X 1 + IH 1 hedef.
-- Gün aşırı build-in-public X postu: launch metrikleri, öğrenilen ders, kullanıcı geri bildirimi.
+- Günlük tur (Bölüm 10 ritmi): IH 1 hedef (X rotasyonda değil).
+- ~~Gün aşırı build-in-public X postu~~ — **iptal**, X rotasyonda değil. Build-in-public içerik yerine IH founder-diary güncellemeleri veya SEO içeriğine (Bölüm 9.4 Faz 2) yönlendirilir.
 - İlk 3-5 gerçek kullanıcıdan testimonial iste (ücretsiz olduğu için karşılığında verilecek indirim yok — talep doğrudan ve karşılıksız yapılır).
 
 ### Hafta 2-3 — Sosyal Kanıt Döngüsü
@@ -276,11 +276,11 @@ Mevcut 3 platform yetersizdir. Ölçülen gerekçeler:
 **Faz 0 — Doküman temizliği** — ✅ **TAMAMLANDI (2026-08-02, bu commit).** Bölüm 1, 2, 3, 4 (Şablon B/C/D + Mesajlaşma Kuralları), 5, 6, 7, 8 ücretsiz modele ve yeni stratejiye göre güncellendi; bayat LS/indirim/early-access dili tamamen kaldırıldı.
 
 **Faz 1 — Lansman (bu hafta, en yüksek öncelik)**
-- [ ] PH "Upcoming" sayfasını aç (Bölüm 5.1).
-- [ ] 3-5 ekran görüntüsü/GIF hazırla (Bölüm 5.2).
-- [ ] Lansman günü metinlerini yaz: PH açıklaması + ilk yorum + IH launch postu + X thread (Bölüm 5.5).
-- [ ] **Lansman tarihini belirle** (Salı/Çarşamba önerilir) → Bölüm 5.6'ya yaz.
-- [ ] Lansman günü: Bölüm 6 "Gün 0" checklist'ini uygula.
+- [x] **Lansman tarihini belirle** → **2026-08-05 (Çarşamba)**, 2026-08-02'de belirlendi (Bölüm 5.6).
+- [x] PH "Upcoming" taslağı açıldı ve dolduruldu (2026-08-02) — `producthunt.com/posts/new` üzerinden: isim "CancelKit", tagline "Turn cancellations into saved revenue — free, no card" (53/60), açıklama (Bölüm 5.5 çerçevesiyle uyumlu), launch tags (SaaS, Fintech, Customer Success), ilk yorum (kurucu hikayesi, Şablon B çerçevesi) yazıldı. Maker olarak "I worked on this product" işaretlendi. X account alanı **boş bırakıldı** (X rotasyonda değil). Taslak "In progress" durumunda, **henüz yayınlanmadı/gönderilmedi**. PH'nin kendi "Launch checklist"ine göre **Required: %67 tamamlandı** — eksik iki madde: **Thumbnail** ve **Gallery görselleri**.
+- [ ] **3-5 ekran görüntüsü/GIF hazırla** (Bölüm 5.2) — PH taslağının Thumbnail + Gallery alanları için gerekli, tek kalan Required madde. Gerçek üründen (cancelkit.site) alınmalı: widget'ın cancel butonunda tetiklenmesi → exit survey → save offer → dashboard.
+- [ ] Görseller yüklenip PH taslağı %100 Required'a tamamlandığında, Strongly Recommended maddeleri (Shoutouts, Additional Makers, Video/Loom) değerlendirilir.
+- [ ] Lansman günü (2026-08-05): Bölüm 6 "Gün 0" checklist'ini uygula.
 
 **Faz 2 — Kalıcı varlıklar (haftalık Cumartesi bloğu)**
 - [ ] **Hafta 1:** 2 SEO sayfası — "How to add an exit survey to your Stripe cancel flow" + "Free churn survey widget for Stripe (no code)". İkisi de kurulum snippet'i içersin.
@@ -295,20 +295,21 @@ Mevcut 3 platform yetersizdir. Ölçülen gerekçeler:
 
 ## 10. Çalışma Ritmi (2026-08-02'den itibaren)
 
-### Günlük tur — Pzt-Cum, **1×/gün, 30-45 dk**
+### Günlük tur — Pzt-Cum, **1×/gün, ~20-25 dk**
 
-> **Karar gerekçesi (ölçülen):** 2×/gün uygulanan günlerde (07-12, 13, 14, 16, 21) günde ~8 etkileşim üretildi ama trafik/yanıt oranında 1×/gün günlere göre **fark oluşmadı**. Buna karşılık en yoğun dönemin hemen ardından 10 günlük tam terk yaşandı. PH günlük turdan çıkınca günün saatine bağlı tek platform da ortadan kalktı. **Sürdürülen 1×/gün > terk edilen 2×/gün.** İkinci turun serbest kalan zamanı (~4 saat/hafta) haftalık asset bloğuna aktarıldı.
+> **Karar gerekçesi (ölçülen):** 2×/gün uygulanan günlerde (07-12, 13, 14, 16, 21) günde ~8 etkileşim üretildi ama trafik/yanıt oranında 1×/gün günlere göre **fark oluşmadı**. Buna karşılık en yoğun dönemin hemen ardından 10 günlük tam terk yaşandı. **Sürdürülen 1×/gün > terk edilen 2×/gün.**
+>
+> **2026-08-02 güncellemesi — X çıkarıldı:** X hesabına aynı gün X'in kendi otomatik spam-sınıflandırıcısı tarafından erişimi kısıtlayan bir etiket eklendiği tespit edildi (bkz. Bölüm 2). Kullanıcı kararıyla X, Reddit'in yanına, **kalıcı olarak rotasyon dışına** alındı. Günlük tur artık **tek platformludur: Indie Hackers.** Serbest kalan zaman (eski X adımı + eski ikinci tur) haftalık asset bloğuna aktarılmıştır — bkz. Bölüm 9.4 Faz 1/2, özellikle lansman hazırlığı artık daha da öncelikli çünkü aktif günlük kanal sayısı 1'e düştü.
 
 **Önerilen slot:** akşam 18:00-21:00 (yerel) — trafiğin %57'si ABD kaynaklı, bu aralık ABD sabah/öğlen saatlerine denk gelir.
 
 | Adım | Süre | İçerik |
 |---|---|---|
-| 1. **Takip (öncelikli)** | 10 dk | X mentions + IH bildirimleri. **Açık konuşma varsa yeni hedef aramadan önce yanıtla** — ölçülen en yüksek getiri buradan geldi. |
-| 2. **X** | 10 dk | 1 taze hedef, beğeni + 280 karakter altı özgün teknik yorum. Hedefin hesap geçmişini kontrol et (marka güvenliği — 07-21'de "previously banned" bir hesap bu yüzden atlandı). |
-| 3. **Indie Hackers** | 15 dk | 1 taze hedef (ana sayfa/"Newest" — site içi arama çalışmıyor), upvote + teknik yorum. |
-| 4. **Log** | 5 dk | Bölüm 12'ye kayıt. |
+| 1. **Takip (öncelikli)** | 5 dk | IH bildirimleri. **Açık konuşma varsa yeni hedef aramadan önce yanıtla** — ölçülen en yüksek getiri buradan geldi. |
+| 2. **Indie Hackers** | 15 dk | 1 taze hedef (ana sayfa/"Newest" — site içi arama çalışmıyor), upvote + teknik yorum. |
+| 3. **Log** | 5 dk | Bölüm 12'ye kayıt. |
 
-**Product Hunt günlük turda yoktur.** Yalnızca lansman hazırlığı ve lansman gününde kullanılır.
+**Product Hunt günlük turda yoktur** (yalnızca lansman hazırlığı ve lansman gününde kullanılır). **X rotasyonda değil** (spam etiketi, Bölüm 2).
 
 ### Haftalık ritim
 
@@ -329,7 +330,7 @@ Mevcut 3 platform yetersizdir. Ölçülen gerekçeler:
 
 > **Not:** Vercel'in **UTM Parameters sekmesi ücretsiz planda kilitli** — ölçüm için **Referrers** sekmesi kullanılır.
 
-**Kanal-kapatma kuralı:** Bir kanal 2 hafta üst üste 0 yanıt + 0 tık üretirse rutinden çıkarılır. (Product Hunt günlük turuna 2026-08-02'de uygulanan kararın aynısı.)
+**Kanal-kapatma kuralı:** Bir kanal 2 hafta üst üste 0 yanıt + 0 tık üretirse rutinden çıkarılır. (Product Hunt günlük turuna 2026-08-02'de uygulanan kararın aynısı.) Ayrıca **bir kanal platformun kendisi tarafından kısıtlanırsa** (ban, spam etiketi, shadowban) performansına bakılmaksızın derhal çıkarılır — X'e 2026-08-02'de uygulanan karar bu ikinci türe girer.
 
 ---
 
@@ -343,26 +344,24 @@ Mevcut 3 platform yetersizdir. Ölçülen gerekçeler:
 CancelKit günlük GTM turu. Önce docs/GTM_STRATEGY.md Bölüm 12'deki son 2 kaydı
 oku (aynı hedeflere tekrar gitme). Ürün durumu: canlı, kalıcı ÜCRETSİZ, ödeme
 sağlayıcısı yok, kredi kartı gerekmiyor. Reddit rotasyonda değil (hesap banlı).
-Product Hunt günlük turda değil (yalnızca lansman için).
+X rotasyonda değil (2026-08-02: hesap X'in kendi spam-etiketiyle kısıtlandı,
+dokunulmuyor). Product Hunt günlük turda değil (yalnızca lansman için).
+Aktif tek günlük platform: Indie Hackers.
 
 Sırayla yap, her adımda bana taslağı göster ve onay bekle:
 
-1. TAKİP (öncelikli): X mentions + Indie Hackers bildirimleri kontrol et.
-   Yanıt bekleyen açık konuşma varsa yeni hedef aramadan ÖNCE onları yanıtla.
-   Churn/cancel-flow acısını açıkça beyan eden kişilerde tetiklenmiş takip yap
-   (Şablon C — ücretsiz + tek satır script teklifi).
+1. TAKİP (öncelikli): Indie Hackers bildirimlerini kontrol et. Yanıt bekleyen
+   açık konuşma varsa yeni hedef aramadan ÖNCE onları yanıtla. Churn/cancel-flow
+   acısını açıkça beyan eden kişilerde tetiklenmiş takip yap (Şablon C —
+   ücretsiz + tek satır script teklifi).
 
-2. X: bugün/dün atılmış 1 taze hedef bul (churn, cancel flow, retention,
-   Stripe subscription, #buildinpublic). Hedefin hesap geçmişini kontrol et
-   (marka güvenliği). Beğeni + 280 karakter altı özgün teknik yorum.
-
-3. INDIE HACKERS: 1 taze hedef bul (ana sayfa/Newest — site içi arama çalışmıyor).
+2. INDIE HACKERS: 1 taze hedef bul (ana sayfa/Newest — site içi arama çalışmıyor).
    Upvote + teknik yorum. Satış dili yok, ürün yalnızca bağlam olarak anılır.
 
-4. ÖLÇÜM: Vercel Analytics → Referrers sekmesi (UTM sekmesi ücretsiz planda kilitli).
+3. ÖLÇÜM: Vercel Analytics → Referrers sekmesi (UTM sekmesi ücretsiz planda kilitli).
    Ziyaretçi, bounce, /login ve /app ziyaretlerini not et.
 
-5. LOG: Yapılanları docs/GTM_STRATEGY.md Bölüm 12'ye bugünün tarihiyle işle —
+4. LOG: Yapılanları docs/GTM_STRATEGY.md Bölüm 12'ye bugünün tarihiyle işle —
    hedef isimleri, gönderilen içeriğin özeti, alınan tepkiler, teknik notlar.
 
 Mesajlaşma kuralları (Bölüm 4):
@@ -374,7 +373,8 @@ Mesajlaşma kuralları (Bölüm 4):
 - Her paylaşım için ayrı onay al, otomatik gönderme yok.
 
 Ek: Bölüm 9.4'te açık olan asset görevi varsa (PH lansman hazırlığı, SEO sayfası,
-GitHub repo, dizin gönderimi) tur sonunda bana durumunu hatırlat.
+GitHub repo, dizin gönderimi) tur sonunda bana durumunu hatırlat — aktif kanal
+sayısı düştüğü için lansman hazırlığı artık daha da öncelikli.
 ```
 
 ### 11.2 Haftalık asset bloğu prompt'u (Cumartesi)
@@ -652,3 +652,34 @@ hatırlat. Sonucu Bölüm 12'ye haftalık özet olarak işle.
 - **Yeni Bölüm 9** (Strateji Revizyonu — veri, kararlar, aksiyon planı), **Bölüm 10** (Çalışma Ritmi + ölçüm/kanal-kapatma kuralı), **Bölüm 11** (Standart oturum prompt'ları) eklendi. Günlük Aktivite Günlüğü 9 → **12** oldu.
 
 **Sıradaki oturum:** Bölüm 11.1'deki günlük tur prompt'u kullanılacak. Paralelde Bölüm 9.4 Faz 1 (PH "Upcoming" sayfası) açık iş olarak duruyor. Ayrıca 08-01'in 3 hedefinden (Rajat, fabienlk/FlagUp, SyncStaq) gelecek yanıtlar hâlâ kontrol edilmeli.
+
+### 2026-08-02 — Devam: 08-01 hedef taraması + X spam-etiketi bulgusu + PH lansman hazırlığı başlangıcı
+
+> Strateji revizyonunun aynı gün içindeki devam oturumu. Bölüm 11.1 günlük tur prompt'u henüz yazılı hale gelmeden önce, kullanıcı doğrudan üç işi istedi: (1) 08-01 hedeflerinden (Rajat, fabienlk, SyncStaq) yanıt gelip gelmediğini tara, (2) PH lansman tarihini belirle, (3) PH "Upcoming" sayfası taslağını hazırla.
+
+**1. KRİTİK BULGU — X hesabı (@CancelKitHQ) X'in kendi otomatik sınıflandırıcısı tarafından spam etiketiyle kısıtlanmış:**
+- X bildirimlerinde 17 saat önce eklenmiş bir uyarı bulundu: "We've added a temporary label to your account which may impact its reach." Detay sayfası X'in resmi gerekçesini gösterdi: *"we have found your account may contain spam or be engaging in other types of inauthentic behaviors... excluded from trends, replies, recommended notifications, and search results."* (rapor akışının URL'inde `reported_user_label=SpamHighRecall` görüldü — X'in dahili spam sınıflandırıcı etiketi.)
+- **Doğrulama 1:** 08-01'de Rajat'ın (@ThisIsRajat24) tweet'ine atılan yanıt, tweet'in reply thread'inde (hem "Relevant" hem alt seviye "Show replies" görünümünde) hiç görünmüyor — yalnızca başka bir kullanıcının (Nilesh Kumar) konuşması görünür durumda, halbuki reply sayacı "2" (bizim yanıtımızı içermesi gerekiyor).
+- **Doğrulama 2:** `from:CancelKitHQ` X araması **sıfır sonuç** döndürdü — hesap arama indeksinden tamamen dışlanmış.
+- **Olası neden (çıkarım, doğrulanmadı):** 20 gün boyunca düşük takipçili/doğrulanmamış bir hesaptan yabancıların tweet'lerine yoğun "teknik yorum + ürün anması" kalıbıyla yanıt bırakmak, her biri manuel onaylı olsa da X'in otomatik spam sınıflandırıcısını tetiklemiş olabilir.
+- **Kullanıcı kararı:** X'e dokunulmuyor, **strateji ve günlük turdan kalıcı olarak çıkarıldı** (Reddit'in yanına). Bu doğrultuda Bölüm 1 (başlık notu), 2 (platform tablosu), 3 (kural notu), 4 (Şablon D pasif işaretlendi), 5 (launch günü metin listesi), 6 (Gün-0 checklist + Hafta 1), 9.4 (Faz 1 checklist), 10 (günlük ritim, kanal-kapatma kuralı) ve 11.1 (günlük tur prompt'u) güncellendi. Aktif günlük platform artık **yalnızca Indie Hackers**.
+
+**2. 08-01 hedeflerinin tarama sonucu:**
+- **Rajat (@ThisIsRajat24, X):** Yanıt durumu **doğrulanamadı** — hesabın kendi kısıtlaması nedeniyle bizim yanıtımız thread'de görünmüyor, Rajat'ın buna karşı bir yanıt verip vermediği bu kısıtlama çözülmeden anlaşılamaz. X rotasyondan çıktığı için bu hedef takip listesinden düşüldü.
+- **fabienlk (FlagUp, Indie Hackers):** Yanıt geldi — "This approach makes perfect sense: we're addressing two distinct aspects of the same problem. We're still in the very early stages of validation, but that's exactly the goal I'm working toward." Sorumuza (sentiment skorunun gerçek sonuçlara karşı doğrulanıp doğrulanmadığı) dolaylı yoldan cevap verdi (hâlâ erken doğrulama aşamasında). **Doğal kapanış, ek yanıt gerekmedi** (LeoYang/07-19 kalıbıyla aynı).
+- **SyncStaq (Product Hunt):** Maker (Matt) o thread'deki diğer tüm yorumcuları tek tek yanıtlamış (Artem, Rabnoor, Valeria, Raffay, Kritish) ama **bizim yorumumuza (18 saat önce) henüz yanıt vermemiş** — PH'nin ölçülen 0/13 yanıt deseniyle tutarlı, ek aksiyon gerekmedi.
+
+**3. PH lansman hazırlığı — başlangıç:**
+- Bugünün tarihi (2026-08-02) Pazar; Bölüm 5.6'daki "Salı/Çarşamba" önerisine göre adaylar **2026-08-04 (Salı)** ve **2026-08-05 (Çarşamba)**.
+- PH submit akışı (`producthunt.com/posts/new`) kontrol edildi — "Link to the product" alanına `cancelkit.site` girilip "Get started" ile devam edilen gerçek bir gönderim akışı; **henüz gönderilmedi**, kamuya açık bir sayfa oluşturacağı için önce kullanıcı onayı bekleniyor.
+- Lansman tarihi ve "Upcoming" sayfası taslak metni (tagline, açıklama, ilk yorum) bir sonraki adımda kullanıcıya sunulacak.
+
+**Sıradaki adım:** Kullanıcıya lansman tarihi önerisi + PH Upcoming taslak metni sunulup onay alınacak; onay sonrası Bölüm 5.6 ve Faz 1 checklist güncellenecek.
+
+**4. Onay ve PH taslağının doldurulması:**
+- Kullanıcı **2026-08-05 (Çarşamba)** lansman tarihini ve taslak metni onayladı; "PH'ye Upcoming taslağını şimdi oluştur" talimatı verildi.
+- `producthunt.com/posts/new` üzerinden gerçek bir taslak oluşturuldu (henüz yayınlanmadı, "In progress" durumunda): isim "CancelKit", tagline "Turn cancellations into saved revenue — free, no card", açıklama, 3 launch tag (SaaS, Fintech, Customer Success), ilk yorum (kurucu hikayesi) girildi. Maker olarak işaretlendi. X account alanı boş bırakıldı (X rotasyonda değil).
+- **Teknik not — metin alanlarında tekrarlayan karakter/boşluk düşmesi:** Bu oturumda PH'nin tagline ve özellikle çok satırlı "first comment" textarea'sına `type` action ile hızlı yazıldığında birden fazla kez karakter (`card`→`cad`, `MRR`→`MR`) veya kelimeler arası boşluk (`MRR at`→`MRRat`) sessizce düştü — yazma sonrası ekran görüntüsüyle doğrulanmadan fark edilmeyecek kadar ince bir hata. **Ders:** Uzun/çok satırlı metin alanlarına yazarken (a) metni kısa cümle parçaları hâlinde ayrı `type` çağrılarıyla gönder, (b) her parçadan sonra `zoom` ile yazılanı piksel düzeyinde doğrula, (c) tek karakter/boşluk düzeltmeleri gerektiğinde `type` yerine tekil `key` çağrıları (`key: "t"`, `key: "space"`) daha güvenilir çalıştı. Ayrıca bu oturumda birkaç kez `computer:screenshot`/`zoom` "CDP sendCommand Page.captureScreenshot timed out" hatası verdi — bilinen geçici renderer donmasıyla aynı aile, birkaç saniye bekleyip tekrar denemek her seferinde çözdü.
+- **PH'nin kendi "Launch checklist"i:** Required bölümü **%67 tamamlandı** — Product name, tagline, description, launch tags, first comment tamam; **Thumbnail** ve **Gallery görselleri** eksik (tek kalan Required madde, gerçek ürün ekran görüntüsü/GIF gerektiriyor — Bölüm 9.4 Faz 1'e ayrı madde olarak işlendi).
+
+**Sıradaki oturum:** Bölüm 11.1 (IH tek platformlu) günlük tur prompt'u kullanılacak. En yüksek öncelikli açık iş: cancelkit.site'tan 3-5 gerçek ekran görüntüsü/GIF alıp PH taslağının Thumbnail + Gallery alanlarını doldurmak (Bölüm 9.4 Faz 1) — bu tamamlanınca PH taslağı Required %100'e ulaşır ve 2026-08-05 lansmanı için hazır olur.
