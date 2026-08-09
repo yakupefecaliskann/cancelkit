@@ -816,3 +816,35 @@ hatırlat. Sonucu Bölüm 12'ye haftalık özet olarak işle.
 **3. Canlı doğrulama:** `https://cancelkit.site` doğrudan ziyaret edildi (WebFetch) — sayfa normal yükleniyor, başlık "CancelKit — Turn cancellations into saved revenue", tüm bölümler (3-adım kurulum, canlı demo, ücretsiz fiyatlandırma) doğru görüntüleniyor. **Domain artık tam olarak çalışır durumda, ~3 günlük kesintiden sonra.**
 
 **Sonuç ve sıradaki adım:** En yüksek öncelikli açık iş kapandı. PH taslağı zaten %100 hazır bekliyordu (Bölüm 9.4 Faz 1), tek eksik buydu. **Kullanıcıyla onaylanması gereken:** yeni bir lansman tarihi (eski hedef 08-05 geçti) — onaylanınca Bölüm 6 "Gün 0" checklist'i uygulanmalı ve PH taslağının "Link to the launch" alanı çalışan domain'e karşı tekrar test edilmeli. name.com Ticket #3056538 açık kalabilir (kapanması gerekmiyor, sorun zaten Radix tarafında çözüldü).
+
+### 2026-08-08 — Gün 0 checklist başlangıcı: PH lansmanı planlandı (9 Ağustos), geri kalanı yarına ertelendi
+
+**1. Domain doğrulaması:** `https://cancelkit.site` WebFetch ile tekrar kontrol edildi, normal yükleniyor — 08-07'deki çözüm kalıcı.
+
+**2. PH taslağı incelendi:** `producthunt.com/my/products` → CancelKit taslağı hâlâ "In progress". Launch checklist: **Required %100 Complete**, Strongly Recommended'dan "Write the first comment" işaretli (Shoutouts/Additional Makers/Video-Loom boş, zorunlu değil). Link alanı gerçek değerle (`https://cancelkit.site`, placeholder değil — triple-click ile seçilerek doğrulandı) dolu. Tagline, description, first comment (founder-story anlatısı, billing katmanını yazıp kaldırma hikayesi) hepsi kontrol edildi, doğru.
+
+**3. Kritik bulgu — bugün (08-08 Cumartesi) PH'de lansman seçeneği olarak sunulmuyordu.** "Schedule launch for later" takviminde ilk seçenek Pazar 9 Ağustos'tu. Neden: PH günleri gece yarısı PT'de başlıyor ve o an (oturum sırasında) Türkiye saatiyle 12:30 = PT'de zaten gece 02:30'du, yani Cumartesi'nin PT günü 2.5 saat önce başlamıştı — yeni bir launch geriye dönük olarak bugüne eklenemiyor.
+
+**4. Kullanıcıya soruldu, Pazar 9 Ağustos onaylandı** (en erken seçenek — kullanıcının tutarlı tercihi). PH'nin kendi teyidi: "Your product will be visible on the homepage August 9 at 12:01am PT (10:01am GMT+3) for 24 hours." **Confirm scheduled date** tıklandı → `producthunt.com/my/products` durumu **"Scheduled — Scheduled on August 9th, 2026 12:01 AM PDT"** olarak doğrulandı.
+
+**5. Zamanlama kararı — Bölüm 6 "Gün 0"ın geri kalanı (IH founder-diary postu, IH Product sayfası, kişisel bildirimler) bilinçli olarak YARINA ertelendi.** Gerekçe: PH sayfası şu an "Upcoming" durumda, henüz oy verilemiyor; bugün IH postu/bildirim gönderilirse insanlar oylanamayan bir sayfaya yönlendirilmiş olur. Kullanıcıya bu tradeoff soruldu, **"yarın PH canlıya çıktığında hepsini birlikte yap"** onayı alındı — klasik launch-day senkronizasyon playbook'u.
+
+**Sıradaki oturum (09-08, PH canlıya çıktıktan sonra ~10:01 Türkiye saati veya sonrası):** Bölüm 6 "Gün 0" listesinin kalanını sırayla, her paylaşım için ayrı onay alarak uygula: (a) PH sayfasının canlı/oylanabilir olduğunu doğrula, ilk yorumu (zaten yazılı, launch anında otomatik postlanacak) kontrol et; (b) Şablon B ile IH founder-diary launch postu — taslağı göster, onay al, gönder; (c) IH "Product" sayfasını canlıya al; (d) geçmişte konuşulan kişilere kişisel bildirim (Radiant-Caramel6192, quratulaincreatives, LeoYang, brka — **d11v'ye yazılmaz**), her mesaj için ayrı onay. Ardından normal günlük tur (Bölüm 11.1) bu hafta PH lansman takibiyle birlikte yürüsün.
+
+### 2026-08-09 — Gün 0 checklist tamamlandı: PH canlı, IH postu + Product sayfası + 3/4 kişisel bildirim gönderildi
+
+**1. PH doğrulaması:** `producthunt.com/my/products` → CancelKit **"Live"**, "Posted on August 9th, 2026". Launch sayfası "Launching today" rozetiyle oylanabilir durumda, founder first comment (kurucu hikayesi) pinlenmiş halde zaten yayında. Lansman otomatik olarak zamanında canlıya geçmiş.
+
+**2. Indie Hackers geçici site-geneli kesinti:** Oturumun başında `indiehackers.com` tamamen **502 Bad Gateway** veriyordu (sadece belirli sayfa değil, ana sayfa dahil tüm site — Cloudflare→origin hatası). Bizim tarafımızda düzeltilemeyecek bir altyapı sorunu olduğu için tekrar tekrar denemek yerine arka planda periyodik kontrol (`curl`, art arda başarılı yanıt şartı) kullanıldı; ~15-20 dakika içinde site kararlı şekilde geri geldi. **Not:** IH bazen "200 dönüyor ama yazma/API istekleri hâlâ zaman aşımına uğruyor" ara bir kararsızlık dönemi de yaşadı (bir post taslağı 524 hatasıyla kayboldu) — bir sonraki oturumda benzer bir kesinti yaşanırsa, tek seferlik hızlı retry yerine birkaç dakikalık stabilite penceresi beklemek daha güvenilir.
+
+**3. IH founder-diary launch postu (Şablon B) gönderildi:** Şablona PH launch linki eklendi ("We're live on Product Hunt today — would love your support: producthunt.com/products/cancelkit"). Post başarıyla yayınlandı, kendine özel URL slug aldı ve "Edit" seçeneğiyle doğrulandı.
+
+**4. IH "Product" sayfası ilk kez oluşturuldu:** `indiehackers.com/products/new` üzerinden — bu madde daha önce hiç yapılmamıştı, sadece profildeki basit "Cancelkit / cancelkit.site" sosyal linki vardı. Form: Product Name "CancelKit", Tagline "Turn cancellations into saved revenue — free, no card", Website `https://cancelkit.site`. **Logo sorunu:** PH'deki küçük thumbnail meğer metin içeren bir ekran görüntüsüymüş (temiz logo değil) — kullanıcı onayıyla basit bir "CK" monogram logosu (indigo marka rengi, `#6366f1`, brand renk paletinden) oluşturulup yüklendi. Sayfa `indiehackers.com/product/cancelkit` adresinde canlı, "Create a product page" checklist maddesi işaretli.
+
+**5. Kişisel bildirimler — 3/4 gönderildi, 1 tanesi ulaşılamaz:**
+- **brka (Nikola, StatusPage.me):** eski early-access takip yorumumuza (23 gün önce, "132 users, 3 current customers..." thread'i) REPLY olarak güncelleme bırakıldı.
+- **quratulaincreatives:** "17 Conversion Killers" thread'indeki devam eden konuşmamıza (21 gün önce kendi takip sorumuz vardı) güncelleme eklendi.
+- **LeoYang (Revova):** eski spesifik thread (decline-code retry timing) global aramada bulunamadı; bunun yerine kendi güncel postuna ("Most founders are optimizing the wrong churn" — voluntary/involuntary churn ayrımı, CancelKit/Revova'nın tamamlayıcılığına birebir uyuyor) taze bir yorum bırakıldı.
+- **Radiant-Caramel6192:** memory/log'a göre bu kişiyle geçmiş etkileşim aslında **Reddit r/SaaS**'taydı, IH'de değil — Reddit hesabı banlı olduğu için bugün ulaşılamadı. **Öneri: bu kişi Gün 0 kişisel bildirim listesinden düşülsün**, aktif erişilebilir bir kanalı yok.
+
+**Sonuç:** Bölüm 6 "Gün 0" checklist'i tamamlandı (PH lansmanı + IH founder-diary postu + IH Product sayfası + ulaşılabilir 3/4 kişisel bildirim). **Sıradaki oturum:** normal Hafta 1 günlük tur ritmine (Bölüm 11.1) geç, PH yorum/oy takibini ve IH postuna gelecek yanıtları kontrol et.
