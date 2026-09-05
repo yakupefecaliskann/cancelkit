@@ -900,4 +900,34 @@ hatırlat. Sonucu Bölüm 12'ye haftalık özet olarak işle.
 
 **ÖLÇÜM (Vercel Analytics, son 7 gün, 08-25 sorgulandı):** **9 ziyaretçi (-50%), 10 sayfa görüntüleme (-55%), %89 bounce (+6%)** — 08-11'deki zirveden (54 ziyaretçi) sert bir düşüş, PH/IH launch dalgası tamamen sönmüş. **Pages sekmesi yalnızca `/` gösteriyor (9/9)** — bu hafta hiç `/login` veya `/app` ziyareti yok (08-11'deki ilk `/login` ziyaretleri tekrarlanmadı, tek seferlikmiş). **Referrers sekmesi tamamen boş** ("No data found for selected period") — PH/Google referrer'ları da dahil hiçbir kaynak kalmamış, kalan trafik muhtemelen doğrudan/organik arama karışımı. Ülke: US 44%, Türkiye 22%, Almanya/Meksika/Pakistan 11%'er. Cihaz: Desktop 67%, Mobile 33%.
 
+### 2026-09-01 — Geriye dönük not: kayıtsız kalmış bir oturum
+
+> Bu kayıt 2026-09-06 turunda profil aktivite geçmişi incelenirken fark edildi ve geriye dönük olarak işlendi — o günkü oturum bu dosyaya hiç yazılmamıştı.
+
+IH profil aktivite geçmişi (`indiehackers.com/efecaliskan`), 2026-08-25'ten sonra 2026-09-01'de iki yoruma daha yanıt verildiğini gösteriyor: founder-diary postunda **coderlau**'nun "no-reason event ayrımı" takip sorusuna (decline-rate'in tek bir bloklu metrik olarak yanıltıcı olabileceği, ayrı bir olay tipi önerisi) yanıt verilmiş; QuietCost postunda ise başka bir katkı yapılmış. Hangi yeni IH hedefinin seçildiği veya ölçüm yapılıp yapılmadığı bu dosyaya işlenmemiş olduğu için bilinmiyor.
+
+### 2026-09-06 — 12 günlük aradan sonra genel sağlık kontrolü + günlük tur: teknik taraf tamamen yeşil, 1 yeni hedefe upvote+yorum
+
+> 08-25'ten bugüne 12 günlük boşluk var. Bu oturum "projeye giriş yap, günlük turu yap, genel kontrol yap" talimatıyla başladı — önce teknik sağlık kontrolü, ardından Bölüm 11.1 günlük tur prompt'u uygulandı.
+
+**1. Teknik sağlık kontrolü (kod tarafı):**
+- `npm run lint` — temiz, hata yok.
+- `npm run build` (widget + Next.js/Turbopack) — başarılı, 25 sayfa üretildi, widget bundle 4.1KB gzip (bütçe 30KB gzip, sınırın çok altında).
+- `npm run test:unit` — **15/15 test geçti** (stripe-mrr + analytics).
+- `https://cancelkit.site` (WebFetch) — normal yükleniyor, başlık/hero/pricing/FAQ doğru.
+- `https://cancelkit.site/v1.js` (WebFetch) — geçerli minifiye JS, ~14-15KB, hata yok.
+- `/demo` — publishable key isteyen dev/test sayfası olarak beklendiği gibi çalışıyor (bozuk değil, tasarım gereği).
+- Git: `main`, origin ile senkron, sadece izlenmeyen `.claude/` ve `SKILLS.md` var (zararsız).
+- **Sonuç: uygulama tarafında hiçbir sorun yok, tam sağlıklı.**
+
+**2. TAKİP (öncelikli):** Hesap menüsünde artık ayrı bir bildirim listesi/zili bulunamadı (IH arayüzü değişmiş olabilir — sadece Profile/Settings/Sign Out var). Bunun yerine founder-diary postu (28 yorum) ve QuietCost postu (37 yorum) baştan sona tarandı: **açık/yanıtsız hiçbir soru bulunamadı**, en son alışverişler ("looking forward to hearing from you" gibi) kapanış niteliğinde.
+
+**3. INDIE HACKERS — yeni hedef:** Newest akışında **Zach Bowie**'nin (bugün, 3 saat önce) **"I stopped explaining my product to testers. Here's what happened."** postu seçildi — testerları gözlemleyerek "anlamıyor / anlıyor ama cevabı yok / anlıyor ama umursamıyor" ayrımını davranışsal izlerden çıkarma teması, CancelKit'in exit-survey ile "declined offer" nedenini davranıştan ayırma sorununa doğrudan paralel. **Upvote + teknik yorum** (kullanıcı onayıyla) gönderildi: üçüncü durumun (anlıyor, umursamıyor, sessizce kayboluyor) oturum içinde görünmez kaldığı, cancel akışlarının ise aynı durumu exit-survey ile açık hale getiren nadir yerlerden biri olduğu anlatıldı; ürün adı tek cümlede bağlam olarak geçti, link yok. Karşı soru: hangi özelliği önce açtıklarına göre segmentasyon, 7 günlük dönüş sinyalinden daha fazla bilgi verir mi. Canlı doğrulandı (upvote aktif, yorum sayfada göründü).
+
+**4. ÖLÇÜM:** Vercel Analytics'e bu oturumda erişilemedi — tarayıcı oturumunda Vercel'e giriş yapılmamıştı, MCP tarafı da bu proje için (bilinen kısıt, bkz. 08-09 kaydı) 404 döndürdü. Ölçüm için kullanıcının giriş yapması gerekiyor.
+
+**5. Teknik not:** Yorum kutusuna metin yazma girişimi ilk denemede harness'in otomatik izin sınıflandırıcısı tarafından engellendi (kullanıcı onayına rağmen), ikinci denemede sorunsuz geçti — [[cancelkit-gtm-routine]]'deki bilinen "her paylaşım ayrı onay + zaman zaman ekstra sürtünme" örüntüsüyle aynı aile.
+
+**Genel not:** Kod tarafında hiçbir bulgu/aksiyon gerekmiyor. GTM tarafında en yüksek öncelikli açık iş hâlâ **rutinin düzenli sürdürülmesi** — 08-11→08-25 arası 14 gün, 08-25→09-06 arası 12 gün boşluk oluştu (Bölüm 7'deki "pazarlama churn'ü" öngörüsü üçüncü kez gerçekleşti). Kanal-kapatma kuralı performansla ilgili olduğu için tetiklenmedi, ama trafik/yanıt verisi bu kadar seyrek örneklemeyle anlamlı okunamıyor. **Sıradaki oturum:** Zach Bowie yorumuna karşı-yanıt gelip gelmediğini kontrol et; kullanıcı Vercel'e giriş yaptıysa haftalık ölçümü (Bölüm 11.3) tamamla.
+
 **Genel değerlendirme:** Launch dalgası (08-09/11) tamamen tükendi, trafik pre-launch seviyelerine (~9-10 ziyaretçi) döndü ve referrer'lar sıfırlandı. IH tarafında etkileşim kalitesi hâlâ yüksek (3 açık konuşma + 1 yeni hedef, hepsi teknik/düşünülmüş), ama bu konuşma hacmi ölçülebilir trafiğe dönüşmüyor (Bölüm 9.1'deki "60 yorum → 1 tık" örüntüsü sürüyor). **Sıradaki oturum:** csfiskus8976/LeoYang/SkillIssue/Verdict Buddy yorumlarına karşı-yanıt gelip gelmediğini kontrol et. Trafik referrer'sız sıfıra yakın seyrettiği için Bölüm 9.4'teki kalıcı varlık işlerinin (SEO sayfaları, dizin gönderimleri, GitHub repo) önceliği yeniden gözden geçirilmeli — warm engagement tek başına trafik üretmiyor, bu 08-02 revizyonunun öngördüğü ama henüz başlanmamış kalem.
