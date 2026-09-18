@@ -16,7 +16,7 @@ export async function GET(request: NextRequest) {
   if (!auth.ok) {
     return NextResponse.json(
       { error: auth.reason },
-      { status: auth.reason === "invalid_key" ? 401 : 403 },
+      { status: auth.reason === "invalid_key" ? 401 : 403, headers: corsHeaders(origin) },
     );
   }
 

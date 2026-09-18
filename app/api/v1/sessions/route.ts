@@ -2,7 +2,12 @@ import { customAlphabet } from "nanoid";
 import { NextRequest, NextResponse } from "next/server";
 import { createServiceClient } from "@/lib/supabase/service";
 import { isSessionCreateRateLimited } from "@/lib/rate-limit";
-import { authenticateWidgetRequest, corsHeaders } from "@/lib/widget-auth";
+import {
+  authenticateWidgetRequest,
+  corsHeaders,
+  optionalString,
+  readJsonObject,
+} from "@/lib/widget-auth";
 import type { Offer } from "@/lib/types";
 
 const generateSessionToken = customAlphabet(
@@ -34,15 +39,19 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  let body: CreateSessionBody;
-  try {
-    body = await request.json();
-  } catch {
+  const raw = await readJsonObject(request);
+  if (!raw) {
     return NextResponse.json(
       { error: "invalid_json" },
       { status: 400, headers: corsHeaders(origin) },
     );
   }
+  const body: CreateSessionBody = {
+    reasonId: optionalString(raw.reasonId, 64),
+    reasonText: optionalString(raw.reasonText, 2000),
+    customerId: optionalString(raw.customerId, 255),
+    customerEmail: optionalString(raw.customerEmail, 320),
+  };
 
   // GDPR-2: throttle session creation per (project, customer) so a scripted
   // caller can't spam sessions to probe reasons or drive discount attempts.
@@ -108,7 +117,7 @@ export async function POST(request: NextRequest) {
       customer_id: body.customerId ?? null,
       customer_email: body.customerEmail ?? null,
       reason_id: body.reasonId ?? null,
-      reason_text: body.reasonText?.slice(0, 2000) ?? null,
+      reason_text: body.reasonText ?? null,
       offer_id: topOffer?.id ?? null,
       outcome: "open",
     })

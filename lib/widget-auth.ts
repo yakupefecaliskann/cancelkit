@@ -28,6 +28,26 @@ export function isOriginAllowed(project: Project, origin: string | null): boolea
   return project.allowed_origins.includes(origin);
 }
 
+/**
+ * Parses a widget request body. Only a JSON object is accepted — `null`, arrays
+ * and primitives would otherwise crash field access into an unhandled 500.
+ */
+export async function readJsonObject(request: Request): Promise<Record<string, unknown> | null> {
+  try {
+    const body: unknown = await request.json();
+    return body && typeof body === "object" && !Array.isArray(body)
+      ? (body as Record<string, unknown>)
+      : null;
+  } catch {
+    return null;
+  }
+}
+
+/** A string field trimmed to `max` chars, or undefined for any non-string value. */
+export function optionalString(value: unknown, max: number): string | undefined {
+  return typeof value === "string" && value.length > 0 ? value.slice(0, max) : undefined;
+}
+
 export async function resolveProjectByKey(key: string | null): Promise<Project | null> {
   if (!key || !key.startsWith("pk_")) return null;
 

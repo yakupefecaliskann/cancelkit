@@ -1,8 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createServiceClient } from "@/lib/supabase/service";
-import { authenticateWidgetRequest, corsHeaders, resolveOpenSession } from "@/lib/widget-auth";
-
-type CloseBody = { sessionToken?: string; outcome?: "churned" | "abandoned" };
+import {
+  authenticateWidgetRequest,
+  corsHeaders,
+  optionalString,
+  readJsonObject,
+  resolveOpenSession,
+} from "@/lib/widget-auth";
 
 export async function OPTIONS(request: NextRequest) {
   const origin = request.headers.get("origin");
@@ -25,24 +29,27 @@ export async function POST(
     );
   }
 
-  let body: CloseBody;
-  try {
-    body = await request.json();
-  } catch {
+  const body = await readJsonObject(request);
+  if (!body) {
     return NextResponse.json(
       { error: "invalid_json" },
       { status: 400, headers: corsHeaders(origin) },
     );
   }
 
-  if (body.outcome !== "churned" && body.outcome !== "abandoned") {
+  const outcome = body.outcome;
+  if (outcome !== "churned" && outcome !== "abandoned") {
     return NextResponse.json(
       { error: "invalid_outcome" },
       { status: 400, headers: corsHeaders(origin) },
     );
   }
 
-  const session = await resolveOpenSession(auth.project, id, body.sessionToken);
+  const session = await resolveOpenSession(
+    auth.project,
+    id,
+    optionalString(body.sessionToken, 64),
+  );
   if (!session) {
     return NextResponse.json(
       { error: "session_not_found" },
@@ -50,11 +57,15 @@ export async function POST(
     );
   }
 
+  // Transition only from "open": a concurrent /accept may have just recorded
+  // a save, and overwriting it with "churned" would lose that saved MRR.
   const supabase = createServiceClient();
-  const { error } = await supabase
+  const { data: updated, error } = await supabase
     .from("cancel_sessions")
-    .update({ outcome: body.outcome, resolved_at: new Date().toISOString() })
-    .eq("id", session.id);
+    .update({ outcome, resolved_at: new Date().toISOString() })
+    .eq("id", session.id)
+    .eq("outcome", "open")
+    .select("id");
 
   if (error) {
     return NextResponse.json(
@@ -62,9 +73,15 @@ export async function POST(
       { status: 500, headers: corsHeaders(origin) },
     );
   }
+  if (!updated || updated.length === 0) {
+    return NextResponse.json(
+      { error: "session_not_found" },
+      { status: 404, headers: corsHeaders(origin) },
+    );
+  }
 
   return NextResponse.json(
-    { outcome: body.outcome },
+    { outcome },
     { status: 200, headers: corsHeaders(origin) },
   );
 }

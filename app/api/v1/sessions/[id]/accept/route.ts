@@ -2,9 +2,13 @@ import { NextRequest, NextResponse } from "next/server";
 import { createServiceClient } from "@/lib/supabase/service";
 import { applyOfferToCustomer, createProjectStripeClient } from "@/lib/stripe";
 import type { Offer } from "@/lib/types";
-import { authenticateWidgetRequest, corsHeaders, resolveOpenSession } from "@/lib/widget-auth";
-
-type AcceptBody = { sessionToken?: string };
+import {
+  authenticateWidgetRequest,
+  corsHeaders,
+  optionalString,
+  readJsonObject,
+  resolveOpenSession,
+} from "@/lib/widget-auth";
 
 export async function OPTIONS(request: NextRequest) {
   const origin = request.headers.get("origin");
@@ -33,17 +37,19 @@ export async function POST(
     );
   }
 
-  let body: AcceptBody;
-  try {
-    body = await request.json();
-  } catch {
+  const body = await readJsonObject(request);
+  if (!body) {
     return NextResponse.json(
       { error: "invalid_json" },
       { status: 400, headers: corsHeaders(origin) },
     );
   }
 
-  const session = await resolveOpenSession(auth.project, id, body.sessionToken);
+  const session = await resolveOpenSession(
+    auth.project,
+    id,
+    optionalString(body.sessionToken, 64),
+  );
   if (!session) {
     return NextResponse.json(
       { error: "session_not_found" },
