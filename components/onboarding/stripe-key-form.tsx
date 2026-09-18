@@ -25,7 +25,7 @@ export function StripeKeyForm({ projectId }: { projectId: string }) {
             id="secretKey"
             name="secretKey"
             type="password"
-            placeholder="rk_live_..."
+            placeholder="rk_test_..."
             value={key}
             onChange={(event) => setKey(event.target.value)}
             autoComplete="off"
@@ -36,6 +36,9 @@ export function StripeKeyForm({ projectId }: { projectId: string }) {
             <span className="font-mono">Customers: Read</span>,{" "}
             <span className="font-mono">Subscriptions: Write</span>, and{" "}
             <span className="font-mono">Coupons: Write</span> — nothing more.
+          </p>
+          <p className="text-xs text-muted-foreground">
+            CancelKit is a portfolio project — use a test-mode key, not your live account.
           </p>
         </div>
 

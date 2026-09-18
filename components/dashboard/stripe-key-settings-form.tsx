@@ -24,7 +24,7 @@ export function StripeKeySettingsForm({ projectId }: { projectId: string }) {
           id="secretKey"
           name="secretKey"
           type="password"
-          placeholder="rk_live_..."
+          placeholder="rk_test_..."
           value={key}
           onChange={(event) => setKey(event.target.value)}
           autoComplete="off"

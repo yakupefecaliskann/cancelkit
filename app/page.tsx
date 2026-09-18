@@ -360,6 +360,10 @@ export default function Home() {
           </nav>
           <span>&copy; {new Date().getFullYear()} CancelKit. All rights reserved.</span>
         </div>
+        <p className="mx-auto max-w-6xl px-6 pb-8 text-center text-xs text-muted-foreground">
+          CancelKit is a portfolio project. Try it with Stripe test-mode keys
+          (rk_test_…) rather than a live account.
+        </p>
       </footer>
     </div>
   );

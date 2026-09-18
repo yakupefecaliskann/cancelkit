@@ -8,6 +8,20 @@ Stack: Next.js 15 (App Router) · Supabase (Postgres + RLS + auth) · Stripe ·
 Sentry · Vercel. The widget (`widget/src`) is bundled by esbuild into
 `public/v1.js`.
 
+## Known limitations
+
+CancelKit is a portfolio project, and these trade-offs are deliberate:
+
+- **Customer identity is client-supplied.** The widget sends the Stripe
+  customer id from the host page. Anyone holding a project's public `pk_` key
+  and a valid `cus_…` id could trigger that project's offer for that customer.
+  The damage is capped by one save per customer (enforced by a DB unique index).
+  The production fix is a customer token signed with HMAC by the merchant's backend.
+- **Rate limiting is per customer only.** Sessions without a customer id are
+  not throttled. The production fix is IP-level limiting (e.g. Upstash).
+- **Major upgrades are pending** (Next.js 16, ESLint 10, TypeScript 7).
+  Security patches within the current majors are applied.
+
 ## Development
 
 ```bash
