@@ -53,3 +53,7 @@ supabase/.temp
 
 .vercel
 .env*
+
+# local Claude Code tooling (per-developer, not project code)
+.claude/
+SKILLS.md
